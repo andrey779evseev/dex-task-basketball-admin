@@ -1,5 +1,5 @@
 export interface IUser {
 	name: string
-	avatarUrl: string
+	avatarUrl: string | null
 	token: string
 }

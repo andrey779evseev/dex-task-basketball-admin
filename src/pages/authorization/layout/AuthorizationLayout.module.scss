@@ -27,9 +27,16 @@
 
 	.image {
 		background: $light-blue;
-		background-image: url('@assets/images/imageAuth.png');
 		background-repeat: no-repeat;
 		background-position: center center;
+    
+    &.sign_in {
+      background-image: url('@assets/images/signInImage.svg');
+    }
+    
+    &.sign_up {
+      background-image: url('@assets/images/signUpImage.svg');
+    }
 
 		// специально добавил, мне кажется так выглядит лучше
 		height: 100vh;

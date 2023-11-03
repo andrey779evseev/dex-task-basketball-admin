@@ -1,33 +1,33 @@
+import Header from '@components/header/Header'
+import Navbar from '@components/navbar/Navbar'
 import { useUser } from '@hooks/useUser'
-import classNames from 'classnames'
 import { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import s from './AuthorizationLayout.module.scss'
-import { SIGN_IN_PAGE, SIGN_UP_PAGE } from '@pages/router'
+import s from './ProtectedLayout.module.scss'
+import { SIGN_IN_PAGE, TEAMS_PAGE } from '@pages/router'
 
-const AuthorizationLayout = () => {
+const ProtectedLayout = () => {
 	const user = useUser()
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
 
 	useEffect(() => {
-		if (user !== undefined) navigate('/')
+		if (user === undefined) navigate(SIGN_IN_PAGE)
+		else if (pathname === '/') navigate(TEAMS_PAGE)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
+  if (user === undefined) return null
+
 	return (
 		<main className={s.container}>
+			<Header />
 			<div className={s.content}>
+				<Navbar />
 				<Outlet />
 			</div>
-			<div
-				className={classNames(s.image, {
-					[s.sign_in]: pathname === SIGN_IN_PAGE,
-					[s.sign_up]: pathname === SIGN_UP_PAGE,
-				})}
-			/>
 		</main>
 	)
 }
 
-export default AuthorizationLayout
+export default ProtectedLayout
