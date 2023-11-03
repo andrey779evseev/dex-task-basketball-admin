@@ -1,0 +1,38 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Avenir Book';
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+button,
+input {
+	appearance: none;
+	border: none;
+	outline: none;
+	padding: 0;
+	margin: 0;
+	-webkit-appearance: none;
+}
+
+@font-face {
+	font-family: 'Avenir Black';
+	src: url('../fonts/Avenir\ Black.ttf');
+}
+
+@font-face {
+	font-family: 'Avenir Book';
+	src: url('../fonts/Avenir\ Book.ttf');
+}
+
+@font-face {
+	font-family: 'Avenir Medium';
+	src: url('../fonts/Avenir\ Medium.ttf');
+}

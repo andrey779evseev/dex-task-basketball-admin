@@ -1,0 +1,30 @@
+@import '@assets/styles/colors.scss';
+
+.form {
+	max-width: 366px;
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	.title {
+		color: $blue;
+		font-size: 36px;
+		font-weight: 400;
+		margin-bottom: 8px;
+	}
+
+	.suggestion {
+		font-family: 'Avenir Medium';
+		font-weight: 500;
+		font-size: 14px;
+		color: $gray-80;
+		align-self: center;
+
+		.link {
+			color: $red-80;
+			text-decoration: underline;
+		}
+	}
+}

@@ -1,0 +1,42 @@
+@import '@assets/styles/colors.scss';
+
+.toast {
+	padding: 8px 16px;
+	width: 100%;
+	height: fit-content;
+	min-height: 40px;
+	background: $red-60;
+	border-radius: 4px;
+	font-family: 'Avenir Medium';
+	font-weight: 500;
+	font-size: 16px;
+	color: $white;
+	cursor: pointer;
+	user-select: none;
+
+	&.animate_in {
+		animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	}
+
+	&.animate_out {
+		animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	}
+}
+
+@keyframes slide-left {
+	0% {
+		transform: translateX(calc(100% + 20%));
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-right {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(calc(100% + 20%));
+	}
+}

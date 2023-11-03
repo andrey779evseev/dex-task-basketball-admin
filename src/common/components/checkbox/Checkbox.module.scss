@@ -1,0 +1,99 @@
+@import '@assets/styles/colors.scss';
+
+.container {
+	.checkbox_container {
+		display: grid;
+		grid-template-columns: 1em auto;
+		align-items: center;
+		gap: 8px;
+		font-family: 'Avenir Medium';
+		font-weight: 500;
+		font-size: 14px;
+		color: $gray-80;
+		cursor: pointer;
+		width: fit-content;
+
+		&.label_error {
+			color: $red-40;
+		}
+
+		&.disabled {
+			color: $gray-40;
+		}
+
+		.checkbox {
+			-webkit-appearance: none;
+			appearance: none;
+			background-color: #fff;
+			margin: 0;
+			position: relative;
+			transition: all 0.3s ease;
+			cursor: pointer;
+
+			font: inherit;
+			color: $gray-60;
+			width: 12px;
+			height: 12px;
+			border: 1px solid $gray-60;
+			border-radius: 2px;
+			transform: translateY(-0.075em);
+
+			&:hover {
+				border: 1px solid $red-80;
+				color: $gray-60;
+			}
+
+			&.checkbox_error {
+				border: 1px solid $red-40;
+				color: $red-40;
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				inset: 2.5px 1.5px;
+				display: inline-block;
+				width: 7px;
+				height: 5px;
+				transform: scale(0);
+				transition: 120ms transform ease-in-out;
+				background: #fff;
+				transform-origin: center center;
+				-webkit-mask:
+					url('/checkmark.svg') 0/100% 100%,
+					linear-gradient(#fff, #fff);
+				-webkit-mask-composite: destination-in;
+				mask:
+					url('/checkmark.svg') 0/100% 100%,
+					linear-gradient(#fff, #fff);
+				mask-composite: subtract;
+			}
+
+			&.checked {
+				background: $red-80;
+				border: 1px solid $red-80;
+			}
+
+			&.checked::before {
+				transform: scale(1);
+			}
+
+			&:disabled {
+				border: 1px solid $gray-40;
+				color: $gray-40;
+
+				&.checked {
+					background: $gray-40;
+				}
+			}
+		}
+	}
+
+	.error {
+		font-family: 'Avenir Medium';
+		font-weight: 500;
+		font-size: 12px;
+		margin-top: 2px;
+		color: $red-40;
+	}
+}

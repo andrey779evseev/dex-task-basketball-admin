@@ -1,0 +1,22 @@
+{
+	"$schema": "https://json.schemastore.org/eslintrc",
+	"root": true,
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react-hooks/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"rules": {
+		"quotes": [2, "single", { "avoidEscape": true }],
+		"jsx-quotes": [2, "prefer-single"],
+		"semi": ["error", "never"],
+		"unused-imports/no-unused-imports": "error",
+		"react-refresh/only-export-components": [
+			"warn",
+			{ "allowConstantExport": true }
+		],
+		"@typescript-eslint/no-explicit-any": "off"
+	},
+	"plugins": ["react-refresh", "unused-imports"]
+}
