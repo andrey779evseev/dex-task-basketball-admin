@@ -4,7 +4,6 @@
 .container {
 	width: 100%;
 	height: 100%;
-	padding: 32px 80px;
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
@@ -86,7 +85,6 @@
 	}
 
 	@media screen and (max-width: $screen-lg) {
-		padding: 40px 30px;
 		gap: 24px;
 
 		.header {
@@ -100,12 +98,7 @@
 		}
 	}
 
-	@media screen and (max-width: $screen-md) {
-		padding: 32px 24px;
-	}
-
 	@media screen and (max-width: $screen-sm) {
-		padding: 16px 12px;
 		gap: 16px;
 
 		.header {

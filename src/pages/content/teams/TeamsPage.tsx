@@ -71,7 +71,11 @@ const TeamsPage = () => {
 			)}
 			{pages.data.length !== 0 ? (
 				<div className={s.footer}>
-					<Pagination pagesCount={10} setPage={setPage} page={page} />
+					<Pagination
+						pagesCount={Math.ceil(pages.count / size)}
+						setPage={setPage}
+						page={page}
+					/>
 
 					<Select
 						options={sizeOptions}

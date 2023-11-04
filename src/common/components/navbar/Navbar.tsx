@@ -5,17 +5,22 @@ import { useAppDispatch } from '@core/redux/store'
 import { logoutAction } from '@modules/authorization/actions'
 import { PLAYERS_PAGE, SIGN_IN_PAGE, TEAMS_PAGE } from '@pages/router'
 import classNames from 'classnames'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useMemo } from 'react'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import s from './Navbar.module.scss'
 
 const Navbar = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
+	const { pathname } = useLocation()
+
+	const page = useMemo(() => pathname.slice(1).split('/')[0], [pathname])
 
 	const logout = () => {
 		dispatch(logoutAction())
 		navigate(SIGN_IN_PAGE)
 	}
+
 	return (
 		<aside className={s.navbar}>
 			<nav>
@@ -25,7 +30,7 @@ const Navbar = () => {
 							to={TEAMS_PAGE}
 							className={({ isActive }) =>
 								classNames(s.link, {
-									[s.active]: isActive,
+									[s.active]: isActive || page === 'team',
 								})
 							}
 						>
@@ -38,7 +43,7 @@ const Navbar = () => {
 							to={PLAYERS_PAGE}
 							className={({ isActive }) =>
 								classNames(s.link, {
-									[s.active]: isActive,
+									[s.active]: isActive || page === 'player',
 								})
 							}
 						>

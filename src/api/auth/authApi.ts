@@ -1,8 +1,8 @@
 import { IChangeUserRequest } from '@api/auth/dto/IChangeUserRequest'
 import { ISignInRequest } from '@api/auth/dto/ISignInRequest'
 import { ISignUpRequest } from '@api/auth/dto/ISignUpRequest'
+import { IUser } from '@api/auth/dto/IUser'
 import store, { api } from '@core/redux/store'
-import { IUser } from '@interfaces/IUser'
 
 export const authApi = api.injectEndpoints({
 	endpoints: (builder) => ({

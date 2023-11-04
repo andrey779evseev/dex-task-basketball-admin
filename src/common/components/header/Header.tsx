@@ -7,7 +7,7 @@ import { useState } from 'react'
 import s from './Header.module.scss'
 
 const Header = () => {
-	const [isMenuOpen, setIsMenuOpen] = useState(true)
+	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const animateIsOpen = useAnimationState(isMenuOpen)
 
 	return (

@@ -1,4 +1,4 @@
-import { IUser } from '@interfaces/IUser'
+import { IUser } from '@api/auth/dto/IUser'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/es/storage'

@@ -24,7 +24,9 @@ const ProtectedLayout = () => {
 			<Header />
 			<div className={s.content}>
 				<Navbar />
-				<Outlet />
+				<div className={s.page_wrapper}>
+					<Outlet />
+				</div>
 			</div>
 		</main>
 	)

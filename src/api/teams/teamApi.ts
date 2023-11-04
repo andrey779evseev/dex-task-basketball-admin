@@ -1,10 +1,12 @@
+import { IPaginatedResponse } from '@api/common/dto/IPaginatedResponse'
 import store, { api } from '@core/redux/store'
-import { IGetTeamsRequest } from './dto/get-teams/IGetTeamsRequest'
-import { IGetTeamsResponse } from './dto/get-teams/IGetTeamsResponse'
+import { IGetTeamRequest } from './dto/IGetTeamRequest'
+import { IGetTeamsRequest } from './dto/IGetTeamsRequest'
+import { ITeam } from './dto/ITeam'
 
 export const teamApi = api.injectEndpoints({
 	endpoints: (builder) => ({
-		getTeams: builder.query<IGetTeamsResponse, IGetTeamsRequest>({
+		getTeams: builder.query<IPaginatedResponse<ITeam>, IGetTeamsRequest>({
 			query: (payload) => ({
 				url: 'Team/GetTeams',
 				method: 'GET',
@@ -18,7 +20,19 @@ export const teamApi = api.injectEndpoints({
 				},
 			}),
 		}),
+		getTeam: builder.query<ITeam, IGetTeamRequest>({
+			query: (payload) => ({
+				url: 'Team/Get',
+				method: 'GET',
+				params: {
+					id: payload.id,
+				},
+				headers: {
+					Authorization: `Bearer ${store.getState().authorization.user?.token}`,
+				},
+			}),
+		}),
 	}),
 })
 
-export const { useGetTeamsQuery } = teamApi
+export const { useGetTeamsQuery, useGetTeamQuery } = teamApi

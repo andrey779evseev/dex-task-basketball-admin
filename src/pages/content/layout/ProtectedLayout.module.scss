@@ -13,6 +13,28 @@
 		grid-template-columns: 140px 1fr;
 		flex: 1 1 0%;
 		background: $gray-20;
+
+		.page_wrapper {
+			width: 100%;
+			height: 100%;
+			padding: 32px 80px;
+		}
+	}
+
+	@media screen and (max-width: $screen-lg) {
+		.content {
+			.page_wrapper {
+				padding: 40px 30px;
+			}
+		}
+	}
+
+	@media screen and (max-width: $screen-sm) {
+		.content {
+			.page_wrapper {
+				padding: 16px 12px;
+			}
+		}
 	}
 
 	@media screen and (max-width: $screen-md) {
@@ -20,6 +42,9 @@
 
 		.content {
 			grid-template-columns: 1fr;
+			.page_wrapper {
+				padding: 32px 24px;
+			}
 		}
 	}
 }
