@@ -1,0 +1,70 @@
+@import '@assets/styles/colors.scss';
+@import '@assets/styles/variables.scss';
+
+.pagination {
+	display: flex;
+	gap: 16px;
+	list-style: none;
+	align-items: center;
+
+	.control_button,
+	.break_button {
+		width: 40px;
+		height: 40px;
+		transition: background 0.3s ease;
+		border-radius: 4px;
+		cursor: pointer;
+
+		&:hover {
+			background: $gray-40;
+		}
+	}
+
+	.control_link {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		user-select: none;
+	}
+
+	.page_button {
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $gray-80;
+		transition:
+			background 0.3s ease,
+			color 0.3s ease;
+		background: transparent;
+		cursor: pointer;
+		border-radius: 4px;
+
+		&:hover {
+			background: $gray-40;
+		}
+
+		&.active {
+			background: $red-80;
+			color: $white;
+
+			&:hover {
+				background: $red-100;
+			}
+		}
+	}
+
+	@media screen and (max-width: $screen-sm) {
+		gap: 8px;
+
+		.control_button,
+		.break_button,
+		.page_button {
+			width: 28px;
+			height: 28px;
+		}
+	}
+}

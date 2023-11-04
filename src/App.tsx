@@ -1,4 +1,4 @@
-import Toaster from '@components/toast/Toaster'
+import Toaster from '@components/ui/toast/Toaster'
 import store, { persistor } from '@core/redux/store'
 import Router from '@pages/router'
 import { Provider } from 'react-redux'

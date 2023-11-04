@@ -43,12 +43,19 @@
 				border: 1px solid $red-40;
 			}
 
-			&.password {
+			&.extra_pr {
 				padding-right: 40px;
+			}
+
+			&::placeholder {
+				font-family: 'Avenir Medium';
+				font-size: 14px;
+				font-weight: 500;
+				color: $gray-80;
 			}
 		}
 
-		.eye_button {
+		.icon_button {
 			position: absolute;
 			top: 12px;
 			right: 12px;

@@ -1,9 +1,9 @@
 import { useUser } from '@hooks/useUser'
+import { SIGN_IN_PAGE, SIGN_UP_PAGE } from '@pages/router'
 import classNames from 'classnames'
 import { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import s from './AuthorizationLayout.module.scss'
-import { SIGN_IN_PAGE, SIGN_UP_PAGE } from '@pages/router'
 
 const AuthorizationLayout = () => {
 	const user = useUser()

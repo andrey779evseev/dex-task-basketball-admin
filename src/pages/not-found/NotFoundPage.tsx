@@ -1,8 +1,8 @@
 import { useUser } from '@hooks/useUser'
+import { SIGN_IN_PAGE } from '@pages/router'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import s from './NotFoundPage.module.scss'
-import { SIGN_IN_PAGE } from '@pages/router'
 
 const NotFoundPage = () => {
 	const user = useUser()

@@ -1,6 +1,6 @@
 import { useSignInMutation } from '@api/auth/authApi'
-import Button from '@components/button/Button'
-import Input from '@components/input/Input'
+import Button from '@components/ui/button/Button'
+import Input from '@components/ui/input/Input'
 import { addNotificationAction } from '@core/redux/notificationSlice'
 import { useAppDispatch } from '@core/redux/store'
 import { zodResolver } from '@hookform/resolvers/zod'

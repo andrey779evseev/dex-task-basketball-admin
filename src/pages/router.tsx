@@ -3,9 +3,9 @@ import SignInPage from '@pages/authorization/sign-in/SignInPage'
 import SignUpPage from '@pages/authorization/sing-up/SignUpPage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ProtectedLayout from './content/layout/ProtectedLayout'
+import PlayersPage from './content/players/PlayersPage'
 import TeamsPage from './content/teams/TeamsPage'
 import NotFoundPage from './not-found/NotFoundPage'
-import PlayersPage from './content/players/PlayersPage'
 
 export const SIGN_IN_PAGE = '/sign-in'
 export const SIGN_UP_PAGE = '/sign-up'
@@ -32,23 +32,23 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				Component: ProtectedLayout,
-        children: [
-          {
-            path: TEAMS_PAGE,
-            Component: TeamsPage
-          },
-          {
-            path: PLAYERS_PAGE,
-            Component: PlayersPage
-          },
-        ]
+				children: [
+					{
+						path: TEAMS_PAGE,
+						Component: TeamsPage,
+					},
+					{
+						path: PLAYERS_PAGE,
+						Component: PlayersPage,
+					},
+				],
 			},
 		],
 	},
-  {
-    path: '*',
-    Component: NotFoundPage
-  }
+	{
+		path: '*',
+		Component: NotFoundPage,
+	},
 ])
 
 const Router = () => {

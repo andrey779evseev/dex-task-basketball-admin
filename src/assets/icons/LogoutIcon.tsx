@@ -1,11 +1,6 @@
 const LogoutIcon = () => {
 	return (
-		<svg
-			width='22'
-			height='18'
-			viewBox='0 0 22 18'
-			fill='none'
-		>
+		<svg width='22' height='18' viewBox='0 0 22 18' fill='none'>
 			<path
 				fillRule='evenodd'
 				clipRule='evenodd'

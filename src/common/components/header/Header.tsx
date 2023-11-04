@@ -1,21 +1,29 @@
-import UserProfileIcon from '@assets/icons/UserProfileIcon'
+import MenuIcon from '@assets/icons/MenuIcon'
 import logo from '@assets/images/logo.svg'
-import { useUser } from '@hooks/useUser'
+import Menu from '@components/menu/Menu'
+import MiniUserInfo from '@components/mini-user-info/MiniUserInfo'
+import { useAnimationState } from '@hooks/useAnimationState'
+import { useState } from 'react'
 import s from './Header.module.scss'
 
 const Header = () => {
-	const user = useUser()!
+	const [isMenuOpen, setIsMenuOpen] = useState(true)
+	const animateIsOpen = useAnimationState(isMenuOpen)
+
 	return (
 		<header className={s.header}>
+			{animateIsOpen ? (
+				<Menu isOpen={isMenuOpen} close={() => setIsMenuOpen(false)} />
+			) : null}
+			<button
+				className={s.menu_button}
+				onClick={() => setIsMenuOpen((prev) => !prev)}
+			>
+				<MenuIcon />
+			</button>
 			<img src={logo} alt='logo' className={s.logo} />
-			<div className={s.user_container}>
-				<span className={s.username}>{user.name}</span>
-				{user.avatarUrl === null ? (
-					<UserProfileIcon />
-				) : (
-					<img src={user.avatarUrl} alt={`${user.name} avatar`} className={s.avatar} />
-				)}
-			</div>
+			<div className={s.stub} />
+			<MiniUserInfo className={s.user_container} />
 		</header>
 	)
 }

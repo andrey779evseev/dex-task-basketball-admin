@@ -1,21 +1,21 @@
 import GroupPersonIcon from '@assets/icons/GroupPersonIcon'
-import PersonIcon from '@assets/icons/PersonIcon'
-import classNames from 'classnames'
-import { NavLink, useNavigate } from 'react-router-dom'
-import s from './Navbar.module.scss'
 import LogoutIcon from '@assets/icons/LogoutIcon'
+import PersonIcon from '@assets/icons/PersonIcon'
 import { useAppDispatch } from '@core/redux/store'
 import { logoutAction } from '@modules/authorization/actions'
 import { PLAYERS_PAGE, SIGN_IN_PAGE, TEAMS_PAGE } from '@pages/router'
+import classNames from 'classnames'
+import { NavLink, useNavigate } from 'react-router-dom'
+import s from './Navbar.module.scss'
 
 const Navbar = () => {
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
+	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
 
-  const logout = () => {
-    dispatch(logoutAction())
-    navigate(SIGN_IN_PAGE)
-  }
+	const logout = () => {
+		dispatch(logoutAction())
+		navigate(SIGN_IN_PAGE)
+	}
 	return (
 		<aside className={s.navbar}>
 			<nav>
@@ -48,10 +48,10 @@ const Navbar = () => {
 					</li>
 				</ul>
 			</nav>
-      <button className={s.logout_button} onClick={logout}>
-        <LogoutIcon/>
-        <span>Sign Out</span>
-      </button>
+			<button className={s.logout_button} onClick={logout}>
+				<LogoutIcon />
+				<span>Sign Out</span>
+			</button>
 		</aside>
 	)
 }

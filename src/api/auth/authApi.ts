@@ -1,7 +1,7 @@
-import { IChangeUserRequest } from '@api/auth/dto/request/IChangeUserRequest'
-import { ISignInRequest } from '@api/auth/dto/request/ISignInRequest'
-import { ISignUpRequest } from '@api/auth/dto/request/ISignUpRequest'
-import { api } from '@core/redux/store'
+import { IChangeUserRequest } from '@api/auth/dto/IChangeUserRequest'
+import { ISignInRequest } from '@api/auth/dto/ISignInRequest'
+import { ISignUpRequest } from '@api/auth/dto/ISignUpRequest'
+import store, { api } from '@core/redux/store'
 import { IUser } from '@interfaces/IUser'
 
 export const authApi = api.injectEndpoints({
@@ -18,6 +18,9 @@ export const authApi = api.injectEndpoints({
 				url: 'Auth/Change',
 				method: 'POST',
 				body: payload,
+				headers: {
+					Authorization: `Bearer ${store.getState().authorization.user?.token}`,
+				},
 			}),
 		}),
 		signIn: builder.mutation<IUser, ISignInRequest>({

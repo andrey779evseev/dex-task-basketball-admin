@@ -1,10 +1,18 @@
-const UserProfileIcon = () => {
+import { memo } from 'react'
+
+interface Props {
+	className?: string
+}
+
+const UserProfileIcon = memo((props: Props) => {
+	const { className } = props
 	return (
 		<svg
 			width='30'
 			height='30'
 			viewBox='0 0 30 30'
 			fill='none'
+			className={className}
 		>
 			<path
 				fillRule='evenodd'
@@ -14,6 +22,6 @@ const UserProfileIcon = () => {
 			/>
 		</svg>
 	)
-}
+})
 
 export default UserProfileIcon

@@ -1,40 +1,51 @@
 @import '@assets/styles/colors.scss';
+@import '@assets/styles/variables.scss';
 
 .header {
-  height: 80px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 16px 51px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: $white;
-  box-shadow: 0px 1px 10px 0px $gray-40;
+	height: 80px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 16px 51px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: $white;
+	box-shadow: 0px 1px 10px 0px $gray-40;
+	z-index: $z-header;
 
-  .logo {
-    width: auto;
-    height: 100%;
-  }
+	.menu_button {
+		display: none;
+	}
 
-  .user_container {
-    display: flex;
-    align-items: center;
-    gap: 19px;
+	.logo {
+		width: auto;
+		height: 100%;
+	}
 
-    .username {
-      font-family: 'Avenir Medium';
-      font-weight: 400;
-      font-size: 14px;
-      color: $gray-100;
-    }
+	.stub {
+		display: none;
+	}
 
-    .avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 100%;
-    }
-  }
+	@media screen and (max-width: $screen-md) {
+		height: 62px;
+		padding: 14px 12px;
+
+		.menu_button {
+			display: block;
+		}
+
+		.user_container {
+			display: none;
+		}
+
+		.stub {
+			display: block;
+			width: 24px;
+			height: 24px;
+			background: transparent;
+		}
+	}
 }

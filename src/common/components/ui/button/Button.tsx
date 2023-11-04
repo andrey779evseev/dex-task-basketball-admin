@@ -5,26 +5,26 @@ import s from './Button.module.scss'
 
 interface Props extends PropsWithChildren {
 	disabled?: boolean
-	icon?: JSX.Element
 	variant?: 'primary' | 'secondary'
 	onClick?: () => void
 	isLoading?: boolean
 	type?: 'button' | 'reset' | 'submit'
+	className?: string
 }
 
 const Button = memo((props: Props) => {
 	const {
 		children,
-		icon,
 		variant = 'primary',
 		onClick,
 		disabled = false,
 		isLoading,
 		type,
+		className,
 	} = props
 	return (
 		<button
-			className={classNames(s.button, {
+			className={classNames(s.button, className, {
 				[s.secondary]: variant === 'secondary',
 				[s.loading]: isLoading,
 			})}
@@ -34,8 +34,8 @@ const Button = memo((props: Props) => {
 			disabled={disabled}
 			type={type}
 		>
+			{isLoading ? <LoaderIcon /> : null}
 			{children}
-			{isLoading ? <LoaderIcon /> : icon}
 		</button>
 	)
 })
