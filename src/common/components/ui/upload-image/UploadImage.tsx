@@ -44,8 +44,12 @@ const UploadImage = memo((props: Props) => {
 				})}
 				style={{ backgroundImage: url !== undefined ? `url(${url})` : 'none' }}
 			>
-				{url !== undefined ? <div className={s.overlay} /> : null}
-				{isLoading ? <LoaderIcon size={120} /> : <AddPhotoIcon />}
+				{isLoading ? (
+          <LoaderIcon className={s.loader_icon} />
+				) : (
+					<AddPhotoIcon className={s.photo_icon} />
+				)}
+        {url !== undefined ? <div className={s.overlay} /> : null}
 
 				<input type='file' className={s.input} onChange={upload} />
 			</div>

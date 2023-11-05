@@ -1,4 +1,5 @@
 @import '@assets/styles/colors.scss';
+@import '@assets/styles/variables.scss';
 
 .container {
 	width: 336px;
@@ -6,7 +7,7 @@
 	background-color: $gray-60;
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: contain;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -41,6 +42,40 @@
 		opacity: 0;
 		cursor: pointer;
 	}
+
+  .loader_icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .photo_icon {
+    width: 75px;
+    height: 75px;
+  }
+
+  .loader_icon, .photo_icon {
+    z-index: 1;
+  }
+
+  @media screen and (max-width: $screen-lg) {
+    width: 200px;
+    height: 155px;
+  }
+
+  @media screen and (max-width: $screen-sm) {
+    width: 185px;
+    height: 144px;
+
+    .loader_icon {
+      width: 64px;
+      height: 64px;
+    }
+  
+    .photo_icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
 }
 
 .error {

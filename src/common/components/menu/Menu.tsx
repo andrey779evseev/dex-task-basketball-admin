@@ -2,14 +2,13 @@ import GroupPersonIcon from '@assets/icons/GroupPersonIcon'
 import LogoutIcon from '@assets/icons/LogoutIcon'
 import PersonIcon from '@assets/icons/PersonIcon'
 import MiniUserInfo from '@components/mini-user-info/MiniUserInfo'
-import { useAppDispatch } from '@core/redux/store'
-import { useBodyOverflow } from '@hooks/useBodyOverflow'
+import { useLogout } from '@hooks/logout'
 import { useClickOutside } from '@hooks/useClickOutside'
-import { logoutAction } from '@modules/authorization/actions'
+import { useLockBodyScroll } from '@hooks/useLockBodyScroll'
 import { ROUTES } from '@pages/router'
 import classNames from 'classnames'
-import { memo, useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { memo } from 'react'
+import { NavLink } from 'react-router-dom'
 import s from './Menu.module.scss'
 
 interface Props {
@@ -19,20 +18,12 @@ interface Props {
 
 const Menu = memo((props: Props) => {
 	const { close, isOpen } = props
-	const { showOverflow, hideOverflow } = useBodyOverflow()
-	const dispatch = useAppDispatch()
-	const navigate = useNavigate()
-	const ref = useClickOutside(() => close())
-
-	useEffect(() => {
-		if (isOpen) hideOverflow()
-		else showOverflow()
-	}, [isOpen, showOverflow, hideOverflow])
-
-	const logout = () => {
-		dispatch(logoutAction())
-		navigate(ROUTES.SignIn)
-	}
+  const logout = useLogout()
+	const ref = useClickOutside(() => {
+    console.log('outside')
+    close()
+  })
+	useLockBodyScroll()
 
 	return (
 		<div

@@ -13,11 +13,13 @@ const Header = () => {
 	return (
 		<header className={s.header}>
 			{animateIsOpen ? (
-				<Menu isOpen={isMenuOpen} close={() => setIsMenuOpen(false)} />
+				<Menu isOpen={isMenuOpen} close={() => setIsMenuOpen(prev => !prev)} />
 			) : null}
 			<button
 				className={s.menu_button}
-				onClick={() => setIsMenuOpen((prev) => !prev)}
+				onClick={() => {
+          if (!animateIsOpen) setIsMenuOpen((prev) => !prev)
+        }}
 			>
 				<MenuIcon />
 			</button>

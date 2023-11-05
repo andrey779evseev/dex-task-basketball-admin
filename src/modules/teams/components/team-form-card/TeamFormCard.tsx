@@ -1,4 +1,5 @@
-import { useCreateTeamMutation } from '@api/teams/teamsApi'
+import { ITeam } from '@api/teams/dto/ITeam'
+import { useCreateTeamMutation, useUpdateTeamMutation } from '@api/teams/teamsApi'
 import Breadcrumbs from '@components/ui/breadcrumbs/Breadcrumbs'
 import Button from '@components/ui/button/Button'
 import Input from '@components/ui/input/Input'
@@ -6,35 +7,46 @@ import UploadImage from '@components/ui/upload-image/UploadImage'
 import { addNotificationAction } from '@core/redux/notificationSlice'
 import { useAppDispatch } from '@core/redux/store'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ICreateTeamForm } from '@modules/teams/interfaces/ICreateTeamForm'
-import { CreateTeamFormValidator } from '@modules/teams/validators/CreateTeamFromValidator'
+import { ITeamForm } from '@modules/teams/interfaces/ITeamForm'
+import { TeamFormValidator } from '@modules/teams/validators/TeamFromValidator'
 import { ROUTES } from '@pages/router'
+import { memo, useMemo } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import s from './TeamFormCard.module.scss'
 
-const TeamFormCard = () => {
+interface Props {
+	editTeam?: ITeam | undefined
+}
+
+const TeamFormCard = memo((props: Props) => {
+	const { editTeam } = props
 	const {
 		register,
 		control,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<ICreateTeamForm>({
-		resolver: zodResolver(CreateTeamFormValidator),
+	} = useForm<ITeamForm>({
+		resolver: zodResolver(TeamFormValidator),
 		defaultValues: {
 			name: '',
 			division: '',
 			conference: '',
 		},
+		values: editTeam,
 	})
-	const [createTeam, { isLoading }] = useCreateTeamMutation()
+	const [createTeam, { isLoading: isCreateLoading }] = useCreateTeamMutation()
+	const [updateTeam, { isLoading: isUpdateLoading }] = useUpdateTeamMutation()
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
-	const onSubmit = async (data: ICreateTeamForm) => {
+	const isEdit = useMemo(() => editTeam !== undefined, [editTeam])
+
+	const onSubmit = async (data: ITeamForm) => {
 		try {
-			await createTeam(data).unwrap()
-			navigate(ROUTES.Teams)
+			if (isEdit) await updateTeam({...data, id: editTeam!.id}).unwrap()
+			else await createTeam(data).unwrap()
+			navigate(isEdit ? ROUTES.Team(editTeam!.id) : ROUTES.Teams)
 		} catch (err) {
 			console.error(err)
 			dispatch(
@@ -45,7 +57,7 @@ const TeamFormCard = () => {
 
 	return (
 		<div className={s.container}>
-			<Breadcrumbs path={['Teams', 'Add new team']} />
+			<Breadcrumbs path={['Teams', isEdit ? 'Edit a team' : 'Add new team']} />
 			<form onSubmit={handleSubmit(onSubmit)} className={s.form}>
 				<Controller
 					control={control}
@@ -91,12 +103,12 @@ const TeamFormCard = () => {
 						)}
 					/>
 					<div className={s.actions}>
-						<Link to={ROUTES.Teams}>
+						<Link to={isEdit ? ROUTES.Team(editTeam!.id) : ROUTES.Teams}>
 							<Button variant='secondary' type='button'>
 								Cancel
 							</Button>
 						</Link>
-						<Button type='submit' isLoading={isLoading}>
+						<Button type='submit' isLoading={isCreateLoading || isUpdateLoading}>
 							Save
 						</Button>
 					</div>
@@ -104,6 +116,6 @@ const TeamFormCard = () => {
 			</form>
 		</div>
 	)
-}
+})
 
 export default TeamFormCard

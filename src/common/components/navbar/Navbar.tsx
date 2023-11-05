@@ -1,25 +1,18 @@
 import GroupPersonIcon from '@assets/icons/GroupPersonIcon'
 import LogoutIcon from '@assets/icons/LogoutIcon'
 import PersonIcon from '@assets/icons/PersonIcon'
-import { useAppDispatch } from '@core/redux/store'
-import { logoutAction } from '@modules/authorization/actions'
+import { useLogout } from '@hooks/logout'
 import { ROUTES } from '@pages/router'
 import classNames from 'classnames'
 import { useMemo } from 'react'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import s from './Navbar.module.scss'
 
 const Navbar = () => {
-	const dispatch = useAppDispatch()
-	const navigate = useNavigate()
+	const logout = useLogout()
 	const { pathname } = useLocation()
 
 	const page = useMemo(() => pathname.slice(1).split('/')[0], [pathname])
-
-	const logout = () => {
-		dispatch(logoutAction())
-		navigate(ROUTES.SignIn)
-	}
 
 	return (
 		<aside className={s.navbar}>

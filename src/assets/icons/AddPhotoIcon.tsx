@@ -1,6 +1,13 @@
-const AddPhotoIcon = () => {
+import { memo } from 'react'
+
+interface Props {
+  className?: string
+}
+
+const AddPhotoIcon = memo((props: Props) => {
+  const {className} = props
 	return (
-		<svg width='74' height='75' viewBox='0 0 74 75' fill='none'>
+		<svg width='74' height='75' viewBox='0 0 74 75' fill='none' className={className}>
 			<g>
 				<path
 					opacity='0.7'
@@ -12,6 +19,6 @@ const AddPhotoIcon = () => {
 			</g>
 		</svg>
 	)
-}
+})
 
 export default AddPhotoIcon

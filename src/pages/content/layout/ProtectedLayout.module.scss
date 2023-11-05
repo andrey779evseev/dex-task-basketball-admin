@@ -28,15 +28,7 @@
 			}
 		}
 	}
-
-	@media screen and (max-width: $screen-sm) {
-		.content {
-			.page_wrapper {
-				padding: 16px 12px;
-			}
-		}
-	}
-
+  
 	@media screen and (max-width: $screen-md) {
 		padding-top: 62px;
 
@@ -47,4 +39,12 @@
 			}
 		}
 	}
+
+  @media screen and (max-width: $screen-sm) {
+    .content {
+      .page_wrapper {
+        padding: 16px 12px;
+      }
+    }
+  }
 }

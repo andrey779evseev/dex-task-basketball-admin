@@ -1,9 +1,10 @@
 import { IPaginatedResponse } from '@api/common/dto/IPaginatedResponse'
 import { api } from '@core/redux/store'
-import { ICreateTeamRequest } from './dto/ICreateTeamRequest'
+import { ITeamForm } from '@modules/teams/interfaces/ITeamForm'
 import { IGetTeamRequest } from './dto/IGetTeamRequest'
 import { IGetTeamsRequest } from './dto/IGetTeamsRequest'
 import { ITeam } from './dto/ITeam'
+import { IUpdateTeamRequest } from './dto/IUpdateTeamRequest'
 
 export const teamsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
@@ -27,8 +28,9 @@ export const teamsApi = api.injectEndpoints({
 					id: payload.id,
 				},
 			}),
+			providesTags: (_result, _error, arg) => [{ type: 'Team', id: arg.id }],
 		}),
-		createTeam: builder.mutation<ITeam, ICreateTeamRequest>({
+		createTeam: builder.mutation<ITeam, ITeamForm>({
 			query: (payload) => ({
 				url: 'Team/Add',
 				method: 'POST',
@@ -36,8 +38,23 @@ export const teamsApi = api.injectEndpoints({
 			}),
 			invalidatesTags: ['Teams'],
 		}),
+		updateTeam: builder.mutation<ITeam, IUpdateTeamRequest>({
+			query: (payload) => ({
+				url: 'Team/Update',
+				method: 'PUT',
+				body: payload,
+			}),
+			invalidatesTags: (_result, _error, arg) => [
+				{ type: 'Team', id: arg.id },
+				'Teams',
+			],
+		}),
 	}),
 })
 
-export const { useGetTeamsQuery, useGetTeamQuery, useCreateTeamMutation } =
-	teamsApi
+export const {
+	useGetTeamsQuery,
+	useGetTeamQuery,
+	useCreateTeamMutation,
+	useUpdateTeamMutation,
+} = teamsApi

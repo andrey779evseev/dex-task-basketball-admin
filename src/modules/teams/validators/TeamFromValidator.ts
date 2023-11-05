@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const CreateTeamFormValidator = z.object({
+export const TeamFormValidator = z.object({
 	name: z.string().min(3),
 	division: z.string().min(3),
 	conference: z.string().min(3),

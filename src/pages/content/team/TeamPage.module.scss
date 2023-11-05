@@ -7,8 +7,13 @@
 	flex-direction: column;
 	gap: 24px;
 
-	@media screen and (max-width: $screen-sm) {
+	@media screen and (max-width: $screen-md) {
 		width: calc(100% + 48px);
 		margin: 0 -24px;
+	}
+
+	@media screen and (max-width: $screen-sm) {
+		width: calc(100% + 24px);
+		margin: 0 -12px;
 	}
 }

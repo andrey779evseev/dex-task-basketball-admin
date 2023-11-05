@@ -26,7 +26,7 @@ export const api = createApi({
 		},
 	}),
 	endpoints: () => ({}),
-	tagTypes: ['Teams'],
+	tagTypes: ['Teams', 'Team'],
 })
 
 const store = configureStore({

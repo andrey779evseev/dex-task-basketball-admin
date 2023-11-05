@@ -1,29 +1,37 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useAgentDetect } from './useAgentDetect'
 
 type Event = MouseEvent | TouchEvent
 
-export const useClickOutside = <T extends HTMLElement = HTMLElement>(
-	handler: (event: Event) => void,
-) => {
+export function useClickOutside<T extends HTMLElement>(cb: (e?: Event) => void) {
 	const ref = useRef<T>(null)
+	const refCb = useRef(cb)
+  const {isMobile} = useAgentDetect()
+
+	useLayoutEffect(() => {
+		refCb.current = cb
+	})
+
 	useEffect(() => {
-		const listener = (event: Event) => {
-			const el = ref?.current
-			if (!el || el.contains((event?.target as Node) || null)) {
-				return
+		const handler = (e: Event) => {
+			const element = ref.current
+			if (element && !element.contains(e.target as Node | null)) {
+				refCb.current(e)
 			}
-
-			handler(event)
 		}
 
-		document.addEventListener('mousedown', listener)
-		document.addEventListener('touchstart', listener)
-
-		return () => {
-			document.removeEventListener('mousedown', listener)
-			document.removeEventListener('touchstart', listener)
-		}
-	}, [ref, handler])
+    if (isMobile) {
+      document.addEventListener('touchstart', handler)
+      return () => {
+        document.removeEventListener('touchstart', handler)
+      }
+    } else {
+      document.addEventListener('mousedown', handler)
+      return () => {
+        document.removeEventListener('mousedown', handler)
+      }
+    }
+	}, [])
 
 	return ref
 }

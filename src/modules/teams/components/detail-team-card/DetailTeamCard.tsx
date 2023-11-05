@@ -4,6 +4,8 @@ import TrashIcon from '@assets/icons/TrashIcon'
 import Breadcrumbs from '@components/ui/breadcrumbs/Breadcrumbs'
 import { memo } from 'react'
 import s from './DetailTeamCard.module.scss'
+import { Link } from 'react-router-dom'
+import { ROUTES } from '@pages/router'
 
 interface Props {
 	team: ITeam
@@ -16,9 +18,11 @@ const DetailTeamCard = memo((props: Props) => {
 			<div className={s.header}>
 				<Breadcrumbs path={['Teams', team.name]} />
 				<div className={s.actions}>
-					<button className={s.action}>
-						<PenIcon />
-					</button>
+          <Link to={ROUTES.EditTeam(team.id)} className={s.action}>
+            <button>
+              <PenIcon />
+            </button>
+          </Link>
 					<button className={s.action}>
 						<TrashIcon />
 					</button>
