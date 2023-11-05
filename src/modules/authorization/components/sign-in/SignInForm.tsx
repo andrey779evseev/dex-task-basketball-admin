@@ -5,10 +5,9 @@ import { addNotificationAction } from '@core/redux/notificationSlice'
 import { useAppDispatch } from '@core/redux/store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loginAction } from '@modules/authorization/actions'
-import {
-	SignInFormType,
-	SignInFormValidator,
-} from '@modules/authorization/validators/SignInFormValidator'
+import { ISignInForm } from '@modules/authorization/interfaces/ISignInForm'
+import { SignInFormValidator } from '@modules/authorization/validators/SignInFormValidator'
+import { ROUTES } from '@pages/router'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import s from '../../styles/SignForm.module.scss'
@@ -18,7 +17,7 @@ const SignInForm = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<SignInFormType>({
+	} = useForm<ISignInForm>({
 		resolver: zodResolver(SignInFormValidator),
 		defaultValues: {
 			login: '',
@@ -29,14 +28,14 @@ const SignInForm = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
-	const onSubmit = async (data: SignInFormType) => {
+	const onSubmit = async (data: ISignInForm) => {
 		try {
 			const user = await signIn({
 				login: data.login,
 				password: data.password,
 			}).unwrap()
 			dispatch(loginAction(user))
-			navigate('/')
+			navigate(ROUTES.Teams)
 		} catch (err: any) {
 			if (err?.status === 401)
 				dispatch(
@@ -68,7 +67,7 @@ const SignInForm = () => {
 
 			<p className={s.suggestion}>
 				Not a member yet?{' '}
-				<Link to='/sign-up' className={s.link}>
+				<Link to={ROUTES.SignUp} className={s.link}>
 					Sign Up
 				</Link>
 			</p>

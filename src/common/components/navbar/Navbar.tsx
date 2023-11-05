@@ -3,7 +3,7 @@ import LogoutIcon from '@assets/icons/LogoutIcon'
 import PersonIcon from '@assets/icons/PersonIcon'
 import { useAppDispatch } from '@core/redux/store'
 import { logoutAction } from '@modules/authorization/actions'
-import { PLAYERS_PAGE, SIGN_IN_PAGE, TEAMS_PAGE } from '@pages/router'
+import { ROUTES } from '@pages/router'
 import classNames from 'classnames'
 import { useMemo } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
@@ -18,7 +18,7 @@ const Navbar = () => {
 
 	const logout = () => {
 		dispatch(logoutAction())
-		navigate(SIGN_IN_PAGE)
+		navigate(ROUTES.SignIn)
 	}
 
 	return (
@@ -27,7 +27,7 @@ const Navbar = () => {
 				<ul className={s.links}>
 					<li>
 						<NavLink
-							to={TEAMS_PAGE}
+							to={ROUTES.Teams}
 							className={({ isActive }) =>
 								classNames(s.link, {
 									[s.active]: isActive || page === 'team',
@@ -40,7 +40,7 @@ const Navbar = () => {
 					</li>
 					<li>
 						<NavLink
-							to={PLAYERS_PAGE}
+							to={ROUTES.Players}
 							className={({ isActive }) =>
 								classNames(s.link, {
 									[s.active]: isActive || page === 'player',

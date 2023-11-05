@@ -1,4 +1,4 @@
-import { useGetTeamsQuery } from '@api/teams/teamApi'
+import { useGetTeamsQuery } from '@api/teams/teamsApi'
 import PlusIcon from '@assets/icons/PlusIcon'
 import SearchIcon from '@assets/icons/SearchIcon'
 import notFoundTeamsImage from '@assets/images/notFoundTeamsImage.svg'
@@ -8,7 +8,9 @@ import Search from '@components/ui/search/Search'
 import Select, { Option } from '@components/ui/select/Select'
 import { useDebounce } from '@hooks/useDebounce'
 import TeamCard from '@modules/teams/components/team-card/TeamCard'
+import { ROUTES } from '@pages/router'
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import s from './TeamsPage.module.scss'
 
 const sizeOptions = [
@@ -42,10 +44,12 @@ const TeamsPage = () => {
 					className={s.search_input}
 				/>
 
-				<Button className={s.add_button}>
-					Add
-					<PlusIcon />
-				</Button>
+				<Link to={ROUTES.CreateTeam}>
+					<Button className={s.add_button}>
+						Add
+						<PlusIcon />
+					</Button>
+				</Link>
 			</div>
 
 			{pages.data.length === 0 ? (

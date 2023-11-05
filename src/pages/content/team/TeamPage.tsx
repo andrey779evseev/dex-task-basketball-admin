@@ -1,5 +1,5 @@
 import { useGetPlayersQuery } from '@api/players/playersApi'
-import { useGetTeamQuery } from '@api/teams/teamApi'
+import { useGetTeamQuery } from '@api/teams/teamsApi'
 import DetailTeamCard from '@modules/teams/components/detail-team-card/DetailTeamCard'
 import PlayersTable from '@modules/teams/components/players-table/PlayersTable'
 import { useParams } from 'react-router-dom'

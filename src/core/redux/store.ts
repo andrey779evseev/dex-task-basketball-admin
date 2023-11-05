@@ -15,8 +15,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { notificationsSlice } from './notificationSlice'
 
 export const api = createApi({
-	baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_REACT_APP_API }),
+	baseQuery: fetchBaseQuery({
+		baseUrl: import.meta.env.VITE_REACT_APP_API,
+		prepareHeaders: (headers, { getState }) => {
+			const token = (getState() as RootState).authorization.user?.token
+			if (token) {
+				headers.set('Authorization', `Bearer ${token}`)
+			}
+			return headers
+		},
+	}),
 	endpoints: () => ({}),
+	tagTypes: ['Teams'],
 })
 
 const store = configureStore({

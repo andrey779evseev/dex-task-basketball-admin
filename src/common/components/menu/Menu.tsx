@@ -6,7 +6,7 @@ import { useAppDispatch } from '@core/redux/store'
 import { useBodyOverflow } from '@hooks/useBodyOverflow'
 import { useClickOutside } from '@hooks/useClickOutside'
 import { logoutAction } from '@modules/authorization/actions'
-import { PLAYERS_PAGE, SIGN_IN_PAGE, TEAMS_PAGE } from '@pages/router'
+import { ROUTES } from '@pages/router'
 import classNames from 'classnames'
 import { memo, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -31,7 +31,7 @@ const Menu = memo((props: Props) => {
 
 	const logout = () => {
 		dispatch(logoutAction())
-		navigate(SIGN_IN_PAGE)
+		navigate(ROUTES.SignIn)
 	}
 
 	return (
@@ -55,7 +55,7 @@ const Menu = memo((props: Props) => {
 					<ul className={s.links}>
 						<li>
 							<NavLink
-								to={TEAMS_PAGE}
+								to={ROUTES.Teams}
 								className={({ isActive }) =>
 									classNames(s.link, {
 										[s.active]: isActive,
@@ -68,7 +68,7 @@ const Menu = memo((props: Props) => {
 						</li>
 						<li>
 							<NavLink
-								to={PLAYERS_PAGE}
+								to={ROUTES.Players}
 								className={({ isActive }) =>
 									classNames(s.link, {
 										[s.active]: isActive,

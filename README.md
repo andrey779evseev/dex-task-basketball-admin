@@ -1,4 +1,4 @@
-# move font variants to variables
+# move font variants to variables, + border radius
 
 # React + TypeScript + Vite
 

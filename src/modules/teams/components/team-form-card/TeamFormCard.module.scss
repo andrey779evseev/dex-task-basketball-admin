@@ -1,0 +1,35 @@
+@import '@assets/styles/colors.scss';
+
+.container {
+	border-radius: 10px;
+	background: $white;
+	padding: 24px 32px;
+	width: 100%;
+
+	.form {
+		padding-left: 41px;
+		display: flex;
+		align-items: start;
+		gap: 136px;
+		margin-top: 72px;
+
+		.inputs_container {
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+			max-width: 336px;
+			width: 100%;
+
+			.actions {
+				display: grid;
+				gap: 24px;
+				width: 100%;
+				grid-template-columns: repeat(2, 1fr);
+
+				button {
+					width: 100%;
+				}
+			}
+		}
+	}
+}

@@ -12,5 +12,3 @@ export const SignUpFormValidator = z
 		path: ['password_confirmation'],
 		message: 'Passwords does not match',
 	})
-
-export type SignUpFormType = z.infer<typeof SignUpFormValidator>

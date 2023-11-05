@@ -1,10 +1,11 @@
 import { IPaginatedResponse } from '@api/common/dto/IPaginatedResponse'
-import store, { api } from '@core/redux/store'
+import { api } from '@core/redux/store'
+import { ICreateTeamRequest } from './dto/ICreateTeamRequest'
 import { IGetTeamRequest } from './dto/IGetTeamRequest'
 import { IGetTeamsRequest } from './dto/IGetTeamsRequest'
 import { ITeam } from './dto/ITeam'
 
-export const teamApi = api.injectEndpoints({
+export const teamsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
 		getTeams: builder.query<IPaginatedResponse<ITeam>, IGetTeamsRequest>({
 			query: (payload) => ({
@@ -15,10 +16,8 @@ export const teamApi = api.injectEndpoints({
 					Page: payload.page,
 					PageSize: payload.size,
 				},
-				headers: {
-					Authorization: `Bearer ${store.getState().authorization.user?.token}`,
-				},
 			}),
+			providesTags: ['Teams'],
 		}),
 		getTeam: builder.query<ITeam, IGetTeamRequest>({
 			query: (payload) => ({
@@ -27,12 +26,18 @@ export const teamApi = api.injectEndpoints({
 				params: {
 					id: payload.id,
 				},
-				headers: {
-					Authorization: `Bearer ${store.getState().authorization.user?.token}`,
-				},
 			}),
+		}),
+		createTeam: builder.mutation<ITeam, ICreateTeamRequest>({
+			query: (payload) => ({
+				url: 'Team/Add',
+				method: 'POST',
+				body: payload,
+			}),
+			invalidatesTags: ['Teams'],
 		}),
 	}),
 })
 
-export const { useGetTeamsQuery, useGetTeamQuery } = teamApi
+export const { useGetTeamsQuery, useGetTeamQuery, useCreateTeamMutation } =
+	teamsApi

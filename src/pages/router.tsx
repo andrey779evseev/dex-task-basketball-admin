@@ -4,15 +4,24 @@ import SignUpPage from '@pages/authorization/sing-up/SignUpPage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ProtectedLayout from './content/layout/ProtectedLayout'
 import PlayersPage from './content/players/PlayersPage'
+import CreateTeamPage from './content/team/create/CreateTeamPage'
+import EditTeamPage from './content/team/edit/EditTeamPage'
 import TeamPage from './content/team/TeamPage'
 import TeamsPage from './content/teams/TeamsPage'
 import NotFoundPage from './not-found/NotFoundPage'
 
-export const SIGN_IN_PAGE = '/sign-in'
-export const SIGN_UP_PAGE = '/sign-up'
-export const TEAMS_PAGE = '/teams'
-export const TEAM_PAGE = '/team/:teamId'
-export const PLAYERS_PAGE = '/players'
+// eslint-disable-next-line react-refresh/only-export-components
+export const ROUTES = {
+	SignIn: '/sign-in',
+	SignUp: '/sign-up',
+	Teams: '/teams',
+	TeamStatic: '/team/:teamId',
+	Team: (teamId: number | string) => `/team/${teamId}`,
+	CreateTeam: '/team/create',
+	EditTeamStatic: '/team/:teamId/edit',
+	EditTeam: (teamId: number | string) => `/team/${teamId}/edit`,
+	Players: '/players',
+}
 
 const router = createBrowserRouter([
 	{
@@ -22,11 +31,11 @@ const router = createBrowserRouter([
 				Component: AuthorizationLayout,
 				children: [
 					{
-						path: SIGN_IN_PAGE,
+						path: ROUTES.SignIn,
 						Component: SignInPage,
 					},
 					{
-						path: SIGN_UP_PAGE,
+						path: ROUTES.SignUp,
 						Component: SignUpPage,
 					},
 				],
@@ -36,15 +45,23 @@ const router = createBrowserRouter([
 				Component: ProtectedLayout,
 				children: [
 					{
-						path: TEAMS_PAGE,
+						path: ROUTES.Teams,
 						Component: TeamsPage,
 					},
 					{
-						path: TEAM_PAGE,
+						path: ROUTES.TeamStatic,
 						Component: TeamPage,
 					},
 					{
-						path: PLAYERS_PAGE,
+						path: ROUTES.CreateTeam,
+						Component: CreateTeamPage,
+					},
+					{
+						path: ROUTES.EditTeamStatic,
+						Component: EditTeamPage,
+					},
+					{
+						path: ROUTES.Players,
 						Component: PlayersPage,
 					},
 				],

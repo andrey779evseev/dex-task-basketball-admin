@@ -1,6 +1,7 @@
 import { ITeam } from '@api/teams/dto/ITeam'
 import PenIcon from '@assets/icons/PenIcon'
 import TrashIcon from '@assets/icons/TrashIcon'
+import Breadcrumbs from '@components/ui/breadcrumbs/Breadcrumbs'
 import { memo } from 'react'
 import s from './DetailTeamCard.module.scss'
 
@@ -13,11 +14,7 @@ const DetailTeamCard = memo((props: Props) => {
 	return (
 		<div className={s.container}>
 			<div className={s.header}>
-				<span className={s.breadcrumbs}>
-					Teams
-					<span className={s.divider}> / </span>
-					{team.name}
-				</span>
+				<Breadcrumbs path={['Teams', team.name]} />
 				<div className={s.actions}>
 					<button className={s.action}>
 						<PenIcon />

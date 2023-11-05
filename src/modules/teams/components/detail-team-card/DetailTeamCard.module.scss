@@ -19,17 +19,6 @@
 		border-top-right-radius: 10px;
 		border-top-left-radius: 10px;
 
-		.breadcrumbs {
-			font-family: 'Avenir Medium';
-			font-weight: 500;
-			font-size: 14px;
-			color: $red-80;
-
-			.divider {
-				color: $gray-60;
-			}
-		}
-
 		.actions {
 			display: flex;
 			align-items: center;
@@ -109,10 +98,6 @@
 
 		.header {
 			padding: 12px 16px;
-
-			.breadcrumbs {
-				font-size: 13px;
-			}
 		}
 
 		.content {

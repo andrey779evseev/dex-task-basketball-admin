@@ -1,5 +1,5 @@
 import { useUser } from '@hooks/useUser'
-import { SIGN_IN_PAGE } from '@pages/router'
+import { ROUTES } from '@pages/router'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import s from './NotFoundPage.module.scss'
@@ -9,7 +9,7 @@ const NotFoundPage = () => {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (user === undefined) navigate(SIGN_IN_PAGE)
+		if (user === undefined) navigate(ROUTES.SignIn)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 

@@ -43,7 +43,10 @@ const PlayersTable = memo((props: Props) => {
 						</td>
 						<td className={s.height}>{player.height} cm</td>
 						<td className={s.weight}>{player.weight} kg</td>
-						<td className={s.age}>19</td>
+						<td className={s.age}>
+							{new Date().getUTCFullYear() -
+								new Date(player.birthday).getFullYear()}
+						</td>
 					</tr>
 				))}
 			</tbody>

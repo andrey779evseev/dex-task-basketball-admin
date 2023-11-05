@@ -1,22 +1,52 @@
 import CloseEyeIcon from '@assets/icons/CloseEyeIcon'
 import EyeIcon from '@assets/icons/EyeIcon'
 import classNames from 'classnames'
-import { memo, useState } from 'react'
+import { ChangeEvent, memo, useMemo, useState } from 'react'
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form'
 import s from './Input.module.scss'
 
+/**
+ * Either register or pair value and onChange must be specified
+ */
 interface Props {
 	id: string
 	label: string
-	register: UseFormRegisterReturn
 	error?: FieldError
 	disabled?: boolean
 	type?: 'text' | 'password'
+
+	register?: UseFormRegisterReturn
+	onChange?: (newValue: string) => void
+	value?: string
 }
 
 const Input = memo((props: Props) => {
-	const { id, label, register, error, disabled = false, type = 'text' } = props
+	const {
+		id,
+		label,
+		register,
+		error,
+		disabled = false,
+		type = 'text',
+		value,
+		onChange,
+	} = props
 	const [isShowPassword, setIsShowPassword] = useState(false)
+
+	const properties = useMemo(() => {
+		if (
+			register === undefined &&
+			(value === undefined || onChange === undefined)
+		)
+			throw new Error(
+				'Either register or pair value and onChange must be specified',
+			)
+		if (register !== undefined) return register
+		return {
+			onChange: (e: ChangeEvent<HTMLInputElement>) => onChange!(e.target.value),
+			value,
+		}
+	}, [onChange, register, value])
 
 	return (
 		<div className={s.container}>
@@ -32,7 +62,7 @@ const Input = memo((props: Props) => {
 						[s.input_error]: error !== undefined,
 						[s.password]: type === 'password',
 					})}
-					{...register}
+					{...properties}
 				/>
 				{type === 'password' ? (
 					<button

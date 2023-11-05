@@ -6,10 +6,9 @@ import { addNotificationAction } from '@core/redux/notificationSlice'
 import { useAppDispatch } from '@core/redux/store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loginAction } from '@modules/authorization/actions'
-import {
-	SignUpFormType,
-	SignUpFormValidator,
-} from '@modules/authorization/validators/SignUpFormValidator'
+import { ISignUpForm } from '@modules/authorization/interfaces/ISignUpForm'
+import { SignUpFormValidator } from '@modules/authorization/validators/SignUpFormValidator'
+import { ROUTES } from '@pages/router'
 import { Controller, useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import s from '../../styles/SignForm.module.scss'
@@ -20,7 +19,7 @@ const SignUpForm = () => {
 		handleSubmit,
 		formState: { errors },
 		control,
-	} = useForm<SignUpFormType>({
+	} = useForm<ISignUpForm>({
 		resolver: zodResolver(SignUpFormValidator),
 		defaultValues: {
 			login: '',
@@ -34,7 +33,7 @@ const SignUpForm = () => {
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
-	const onSubmit = async (data: SignUpFormType) => {
+	const onSubmit = async (data: ISignUpForm) => {
 		try {
 			const user = await signUp({
 				login: data.login,
@@ -42,7 +41,7 @@ const SignUpForm = () => {
 				userName: data.name,
 			}).unwrap()
 			dispatch(loginAction(user))
-			navigate('/')
+			navigate(ROUTES.Teams)
 		} catch (err: any) {
 			if (err?.originalStatus === 409)
 				dispatch(addNotificationAction('User with this login already exists'))
@@ -97,7 +96,7 @@ const SignUpForm = () => {
 
 			<p className={s.suggestion}>
 				Already a member?{' '}
-				<Link to='/sign-in' className={s.link}>
+				<Link to={ROUTES.SignIn} className={s.link}>
 					Sign In
 				</Link>
 			</p>
