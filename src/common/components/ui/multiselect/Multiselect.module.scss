@@ -1,0 +1,126 @@
+@import '@assets/styles/colors.scss';
+@import '@assets/styles/variables.scss';
+
+.select {
+	width: fit-content;
+
+	.control {
+		background: $white;
+		border: 0.5px solid $gray-40;
+		cursor: pointer;
+		box-shadow: none;
+
+		&:hover {
+			border-color: $gray-40;
+		}
+
+		&.not_empty {
+			background: $gray-20;
+		}
+
+		.value_container {
+			padding: 7px 12px;
+			gap: 4px;
+
+			.multi_value {
+				margin: 0;
+				background: $red-80;
+				border-radius: 4px;
+
+				.multi_value_label {
+					padding: 2.5px 4px;
+					line-height: 19px;
+					font-family: 'Avenir Book';
+					font-weight: 400;
+					font-size: 14px;
+					color: $white;
+				}
+
+				.multi_value_remove {
+					padding: 6px 4px;
+					transition: background 0.3s ease;
+					border-bottom-left-radius: 0;
+					border-top-left-radius: 0;
+					color: $white;
+
+					&:hover {
+						background: $red-60;
+					}
+				}
+			}
+
+			.more {
+				background: $red-80;
+				border-radius: 4px;
+				padding: 2.5px 3px;
+				color: $white;
+				line-height: 19px;
+			}
+		}
+
+		.clear_indicator {
+			svg {
+				width: 16px;
+				height: 16px;
+				color: $gray-40;
+			}
+		}
+
+		.dropdown_indicator {
+			color: $gray-40;
+			padding: 11.5px 12px;
+		}
+
+		.indicator_separator {
+			margin: 7.5px 0;
+			width: 0.5px;
+			height: 24px;
+			background: $gray-40;
+		}
+	}
+
+	.menu {
+		box-shadow: none;
+		margin: 3px 0;
+		border: 0.5px solid $gray-40;
+
+		.menu_list {
+			padding: 0;
+			border-radius: 4px;
+
+			.option {
+				padding: 9px 20px;
+				cursor: pointer;
+				transition:
+					color 0.3s ease,
+					background 0.3s ease;
+				font-family: 'Avenir Medium';
+				font-weight: 500;
+				font-size: 14px;
+				color: $gray-60;
+
+				&:not(:last-child) {
+					border-bottom: 0.5px solid $gray-40;
+				}
+
+				&:last-child {
+					padding: 9.25px 20px;
+				}
+
+				&.focused {
+					background: $white;
+				}
+
+				&:hover {
+					background: $red-40;
+					color: $white;
+				}
+
+				&.selected {
+					background: $red-100;
+					color: $white;
+				}
+			}
+		}
+	}
+}

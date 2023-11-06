@@ -1,5 +1,4 @@
-import ChevronLeftIcon from '@assets/icons/ChevronLeftIcon'
-import ChevronRightIcon from '@assets/icons/ChevronRightIcon'
+import ChevronIcon from '@assets/icons/ChevronIcon'
 import { memo, useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
@@ -40,13 +39,13 @@ const Pagination = memo((props: Props) => {
 	return (
 		<ReactPaginate
 			breakLabel='...'
-			nextLabel={<ChevronRightIcon />}
+			nextLabel={<ChevronIcon side='right' />}
 			onPageChange={(e) => setPage(e.selected + 1)}
 			pageRangeDisplayed={3}
 			marginPagesDisplayed={1}
 			forcePage={page - 1}
 			pageCount={pagesCount}
-			previousLabel={<ChevronLeftIcon />}
+			previousLabel={<ChevronIcon side='left' />}
 			renderOnZeroPageCount={null}
 			className={s.pagination}
 			previousClassName={s.control_button}

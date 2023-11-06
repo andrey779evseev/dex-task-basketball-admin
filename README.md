@@ -1,4 +1,4 @@
-# move font variants to variables, + border radius
+# move font variants, transitions, border radius to variables, logout when unauthorized response with token, deleting for teams and players + modal
 
 # React + TypeScript + Vite
 

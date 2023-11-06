@@ -43,39 +43,40 @@
 		cursor: pointer;
 	}
 
-  .loader_icon {
-    width: 120px;
-    height: 120px;
-  }
+	.loader_icon {
+		width: 120px;
+		height: 120px;
+	}
 
-  .photo_icon {
-    width: 75px;
-    height: 75px;
-  }
+	.photo_icon {
+		width: 75px;
+		height: 75px;
+	}
 
-  .loader_icon, .photo_icon {
-    z-index: 1;
-  }
+	.loader_icon,
+	.photo_icon {
+		z-index: 1;
+	}
 
-  @media screen and (max-width: $screen-lg) {
-    width: 200px;
-    height: 155px;
-  }
+	@media screen and (max-width: $screen-lg) {
+		width: 200px;
+		height: 155px;
+	}
 
-  @media screen and (max-width: $screen-sm) {
-    width: 185px;
-    height: 144px;
+	@media screen and (max-width: $screen-sm) {
+		width: 185px;
+		height: 144px;
 
-    .loader_icon {
-      width: 64px;
-      height: 64px;
-    }
-  
-    .photo_icon {
-      width: 40px;
-      height: 40px;
-    }
-  }
+		.loader_icon {
+			width: 64px;
+			height: 64px;
+		}
+
+		.photo_icon {
+			width: 40px;
+			height: 40px;
+		}
+	}
 }
 
 .error {

@@ -1,3 +1,3 @@
 export interface IGetTeamRequest {
-	id: string
+	id: number
 }

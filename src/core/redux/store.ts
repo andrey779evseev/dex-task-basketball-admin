@@ -1,5 +1,6 @@
 import { persistedAuthorizationReducer } from '@modules/authorization/reducer'
 import { configureStore } from '@reduxjs/toolkit'
+import queryString from 'query-string'
 import {
 	FLUSH,
 	PAUSE,
@@ -23,6 +24,9 @@ export const api = createApi({
 				headers.set('Authorization', `Bearer ${token}`)
 			}
 			return headers
+		},
+		paramsSerializer: (params) => {
+			return queryString.stringify(params)
 		},
 	}),
 	endpoints: () => ({}),

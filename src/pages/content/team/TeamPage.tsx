@@ -7,7 +7,9 @@ import s from './TeamPage.module.scss'
 
 const TeamPage = () => {
 	const { teamId } = useParams()
-	const { data: team, isError: isTeamError } = useGetTeamQuery({ id: teamId! })
+	const { data: team, isError: isTeamError } = useGetTeamQuery({
+		id: parseInt(teamId!),
+	})
 	const { data: players, isError: isPlayersError } = useGetPlayersQuery({
 		teamIds: [parseInt(teamId!)],
 		page: 1,

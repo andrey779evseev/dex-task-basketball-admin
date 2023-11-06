@@ -3,10 +3,12 @@ import { useAgentDetect } from './useAgentDetect'
 
 type Event = MouseEvent | TouchEvent
 
-export function useClickOutside<T extends HTMLElement>(cb: (e?: Event) => void) {
+export function useClickOutside<T extends HTMLElement>(
+	cb: (e?: Event) => void,
+) {
 	const ref = useRef<T>(null)
 	const refCb = useRef(cb)
-  const {isMobile} = useAgentDetect()
+	const { isMobile } = useAgentDetect()
 
 	useLayoutEffect(() => {
 		refCb.current = cb
@@ -20,17 +22,18 @@ export function useClickOutside<T extends HTMLElement>(cb: (e?: Event) => void) 
 			}
 		}
 
-    if (isMobile) {
-      document.addEventListener('touchstart', handler)
-      return () => {
-        document.removeEventListener('touchstart', handler)
-      }
-    } else {
-      document.addEventListener('mousedown', handler)
-      return () => {
-        document.removeEventListener('mousedown', handler)
-      }
-    }
+		if (isMobile) {
+			document.addEventListener('touchstart', handler)
+			return () => {
+				document.removeEventListener('touchstart', handler)
+			}
+		} else {
+			document.addEventListener('mousedown', handler)
+			return () => {
+				document.removeEventListener('mousedown', handler)
+			}
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	return ref

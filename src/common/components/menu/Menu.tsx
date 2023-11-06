@@ -18,11 +18,11 @@ interface Props {
 
 const Menu = memo((props: Props) => {
 	const { close, isOpen } = props
-  const logout = useLogout()
+	const logout = useLogout()
 	const ref = useClickOutside(() => {
-    console.log('outside')
-    close()
-  })
+		console.log('outside')
+		close()
+	})
 	useLockBodyScroll()
 
 	return (

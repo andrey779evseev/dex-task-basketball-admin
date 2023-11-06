@@ -1,5 +1,8 @@
 import { ITeam } from '@api/teams/dto/ITeam'
-import { useCreateTeamMutation, useUpdateTeamMutation } from '@api/teams/teamsApi'
+import {
+	useCreateTeamMutation,
+	useUpdateTeamMutation,
+} from '@api/teams/teamsApi'
 import Breadcrumbs from '@components/ui/breadcrumbs/Breadcrumbs'
 import Button from '@components/ui/button/Button'
 import Input from '@components/ui/input/Input'
@@ -44,7 +47,7 @@ const TeamFormCard = memo((props: Props) => {
 
 	const onSubmit = async (data: ITeamForm) => {
 		try {
-			if (isEdit) await updateTeam({...data, id: editTeam!.id}).unwrap()
+			if (isEdit) await updateTeam({ ...data, id: editTeam!.id }).unwrap()
 			else await createTeam(data).unwrap()
 			navigate(isEdit ? ROUTES.Team(editTeam!.id) : ROUTES.Teams)
 		} catch (err) {
@@ -108,7 +111,10 @@ const TeamFormCard = memo((props: Props) => {
 								Cancel
 							</Button>
 						</Link>
-						<Button type='submit' isLoading={isCreateLoading || isUpdateLoading}>
+						<Button
+							type='submit'
+							isLoading={isCreateLoading || isUpdateLoading}
+						>
 							Save
 						</Button>
 					</div>

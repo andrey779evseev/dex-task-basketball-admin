@@ -57,4 +57,5 @@ export const {
 	useGetTeamQuery,
 	useCreateTeamMutation,
 	useUpdateTeamMutation,
+	useLazyGetTeamQuery,
 } = teamsApi

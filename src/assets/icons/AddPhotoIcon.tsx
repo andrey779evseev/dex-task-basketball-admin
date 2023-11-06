@@ -1,13 +1,19 @@
 import { memo } from 'react'
 
 interface Props {
-  className?: string
+	className?: string
 }
 
 const AddPhotoIcon = memo((props: Props) => {
-  const {className} = props
+	const { className } = props
 	return (
-		<svg width='74' height='75' viewBox='0 0 74 75' fill='none' className={className}>
+		<svg
+			width='74'
+			height='75'
+			viewBox='0 0 74 75'
+			fill='none'
+			className={className}
+		>
 			<g>
 				<path
 					opacity='0.7'

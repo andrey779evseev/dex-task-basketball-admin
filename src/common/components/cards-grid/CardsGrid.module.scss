@@ -1,0 +1,15 @@
+@import '@assets/styles/variables.scss';
+
+.cards_container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+
+	@media screen and (max-width: $screen-lg) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media screen and (max-width: $screen-sm) {
+		gap: 12px;
+	}
+}

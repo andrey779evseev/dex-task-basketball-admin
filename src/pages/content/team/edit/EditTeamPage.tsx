@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 const EditTeamPage = () => {
 	const { teamId } = useParams()
 	const { data: team, isError } = useGetTeamQuery({
-		id: teamId!,
+		id: parseInt(teamId!),
 	})
 
 	if (team === undefined || isError) return null

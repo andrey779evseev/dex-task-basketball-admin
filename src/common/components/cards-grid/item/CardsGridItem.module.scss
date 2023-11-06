@@ -17,6 +17,16 @@
 		justify-content: center;
 		align-items: center;
 
+		&.player {
+			padding: 16px 45px 0;
+			align-items: end;
+
+			.image {
+				width: 100%;
+				height: auto;
+			}
+		}
+
 		.image {
 			width: 150px;
 			height: 150px;
@@ -36,6 +46,11 @@
 		gap: 12px;
 		font-family: 'Avenir Medium';
 		font-weight: 500;
+
+		.title,
+		.description {
+			text-align: center;
+		}
 
 		.title {
 			font-size: 18px;
@@ -71,6 +86,15 @@
 			.image {
 				width: 60px;
 				height: 60px;
+			}
+
+			&.player {
+				padding: 11px 24px 0;
+
+				.image {
+					width: 100%;
+					height: auto;
+				}
 			}
 		}
 
