@@ -37,16 +37,12 @@
 			gap: 24px;
 
 			.empty_title {
-				font-family: 'Avenir Black';
-				font-weight: 900;
-				font-size: 36px;
+        font: $avenir-black-36;
 				color: $red-40;
 			}
 
 			.empty_description {
-				font-family: 'Avenir Book';
-				font-weight: 400;
-				font-size: 24px;
+				font: $avenir-book-24;
 				color: $gray-80;
 				text-align: center;
 			}

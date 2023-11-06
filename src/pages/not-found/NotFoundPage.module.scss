@@ -28,16 +28,12 @@
 		gap: 24px;
 
 		.title {
-			font-family: 'Avenir Black';
-			font-size: 36px;
-			font-weight: 900;
+			font: $avenir-black-36;
 			color: $red-40;
 		}
 
 		.description {
-			font-family: 'Avenir Book';
-			font-size: 24px;
-			font-weight: 400;
+			font: $avenir-book-24;
 			color: $gray-80;
 		}
 	}

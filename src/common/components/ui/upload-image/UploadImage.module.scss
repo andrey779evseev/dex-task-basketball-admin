@@ -81,9 +81,7 @@
 }
 
 .error {
-	font-family: 'Avenir Medium';
-	font-weight: 500;
-	font-size: 12px;
+	font: $avenir-medium-12;
 	margin-top: 2px;
 	color: $red-40;
 }

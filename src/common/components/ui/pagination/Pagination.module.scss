@@ -1,5 +1,6 @@
 @import '@assets/styles/colors.scss';
 @import '@assets/styles/variables.scss';
+@import '@assets/styles/animations.scss';
 
 .pagination {
 	display: flex;
@@ -11,8 +12,8 @@
 	.break_button {
 		width: 40px;
 		height: 40px;
-		transition: background 0.3s ease;
-		border-radius: 4px;
+		transition: $transition-bg-300-ease;
+		border-radius: $border-radius-base;
 		cursor: pointer;
 		color: $gray-80;
 
@@ -42,7 +43,7 @@
 			color 0.3s ease;
 		background: transparent;
 		cursor: pointer;
-		border-radius: 4px;
+		border-radius: $border-radius-base;
 
 		&:hover {
 			background: $gray-40;

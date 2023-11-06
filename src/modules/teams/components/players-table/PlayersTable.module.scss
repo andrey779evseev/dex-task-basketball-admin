@@ -7,9 +7,7 @@
 	border: 0.5px solid $gray-60;
 	color: $gray-80;
 	border-spacing: 0;
-	font-family: 'Avenir Medium';
-	font-weight: 500;
-	font-size: 14px;
+	font: $avenir-medium-14;
 
 	.title {
 		border-bottom: 0.5px solid $gray-60;

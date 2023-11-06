@@ -1,5 +1,6 @@
 @import '@assets/styles/colors.scss';
 @import '@assets/styles/variables.scss';
+@import '@assets/styles/animations.scss';
 
 .container {
 	display: flex;
@@ -7,9 +8,7 @@
 
 	.label {
 		color: $gray-80;
-		font-family: 'Avenir Medium';
-		font-weight: 500;
-		font-size: 14px;
+		font: $avenir-medium-14;
 		margin-bottom: 4px;
 	}
 
@@ -18,26 +17,25 @@
 			background: $gray-20;
 			cursor: pointer;
 			box-shadow: none;
-      border: none;
-      transition: background 0.3s ease;
+			border: none;
+			transition: $transition-bg-300-ease;
 
 			.value_container {
 				padding: 7px 12px;
 				gap: 4px;
 
-        .placeholder, .single_value {
-          font-family: 'Avenir Medium';
-          font-weight: 500;
-          font-size: 14px;
-        }
+				.placeholder,
+				.single_value {
+					font: $avenir-medium-14;
+				}
 
-        .placeholder {
-          color: $gray-80;
-        }
+				.placeholder {
+					color: $gray-80;
+				}
 
 				.single_value {
-          color: $gray-100;
-        }
+					color: $gray-100;
+				}
 			}
 
 			.clear_indicator {
@@ -61,21 +59,21 @@
 			}
 		}
 
-    &.error {
-      .control {
-        border: 1px solid $red-40;
-      }
-    }
+		&.error {
+			.control {
+				border: 1px solid $red-40;
+			}
+		}
 
 		.menu {
 			box-shadow: none;
 			margin: 3px 0;
 			border: 0.5px solid $gray-40;
-      z-index: $z-popover;
+			z-index: $z-popover;
 
 			.menu_list {
 				padding: 0;
-				border-radius: 4px;
+				border-radius: $border-radius-base;
 
 				.option {
 					padding: 9px 20px;
@@ -83,9 +81,7 @@
 					transition:
 						color 0.3s ease,
 						background 0.3s ease;
-					font-family: 'Avenir Medium';
-					font-weight: 500;
-					font-size: 14px;
+					font: $avenir-medium-14;
 					color: $gray-60;
 
 					&:not(:last-child) {
@@ -114,10 +110,8 @@
 		}
 	}
 
-  .error {
-		font-family: 'Avenir Medium';
-		font-weight: 500;
-		font-size: 12px;
+	.error {
+		font: $avenir-medium-12;
 		margin-top: 2px;
 		color: $red-40;
 	}

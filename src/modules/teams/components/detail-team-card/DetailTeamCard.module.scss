@@ -1,5 +1,6 @@
 @import '@assets/styles/colors.scss';
 @import '@assets/styles/variables.scss';
+@import '@assets/styles/animations.scss';
 
 .container {
 	width: 100%;
@@ -28,7 +29,7 @@
 				width: 24px;
 				height: 24px;
 				border-radius: 2px;
-				transition: background 0.3s ease;
+				transition: $transition-bg-300-ease;
 				cursor: pointer;
 
 				&:hover {
@@ -58,9 +59,7 @@
 		.info {
 			color: $white;
 			.title {
-				font-family: 'Avenir Black';
-				font-weight: 900;
-				font-size: 36px;
+				font: $avenir-black-36;
 				margin-bottom: 40px;
 				line-height: 49px;
 			}
@@ -76,14 +75,10 @@
 				gap: 84px;
 			}
 			.label {
-				font-family: 'Avenir Black';
-				font-weight: 900;
-				font-size: 24px;
+				font: $avenir-black-24;
 			}
 			.description {
-				font-family: 'Avenir Medium';
-				font-weight: 500;
-				font-size: 18px;
+				font: $avenir-medium-18;
 			}
 		}
 	}

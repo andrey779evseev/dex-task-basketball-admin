@@ -2,9 +2,7 @@
 @import '@assets/styles/variables.scss';
 
 .breadcrumbs {
-	font-family: 'Avenir Medium';
-	font-weight: 500;
-	font-size: 14px;
+	font: $avenir-medium-14;
 	color: $red-80;
 
 	.divider {
