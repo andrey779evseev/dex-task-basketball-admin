@@ -51,9 +51,7 @@
 			.option {
 				padding: 9px 20px;
 				cursor: pointer;
-				transition:
-					$transition-color-300-ease,
-					$transition-bg-300-ease;;
+				transition: $transition-color-300-ease, $transition-bg-300-ease;
 				font: $avenir-medium-14;
 				color: $gray-60;
 

@@ -14,7 +14,7 @@ export const imagesApi = api.injectEndpoints({
 			query: (payload) => ({
 				url: 'Image/DeleteImage',
 				method: 'DELETE',
-				params: payload
+				params: payload,
 			}),
 		}),
 	}),

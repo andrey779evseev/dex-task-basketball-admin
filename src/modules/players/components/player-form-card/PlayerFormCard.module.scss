@@ -22,11 +22,11 @@
 			max-width: 336px;
 			width: 100%;
 
-      .group {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-      }
+			.group {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 24px;
+			}
 
 			.actions {
 				display: grid;

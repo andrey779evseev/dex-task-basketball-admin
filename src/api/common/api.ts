@@ -1,8 +1,14 @@
 import store, { RootState } from '@core/redux/store'
 import { parseJwt } from '@helpers/parseJwt'
 import { logoutAction } from '@modules/authorization/actions'
-import { fetchBaseQuery, BaseQueryFn, FetchArgs, FetchBaseQueryError, createApi } from '@reduxjs/toolkit/query/react'
 import queryString from 'query-string'
+import {
+	BaseQueryFn,
+	createApi,
+	FetchArgs,
+	fetchBaseQuery,
+	FetchBaseQueryError,
+} from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
 	baseUrl: import.meta.env.VITE_REACT_APP_API,
@@ -30,7 +36,7 @@ const baseQueryWithAuthCheck: BaseQueryFn<
 		if (result.error.status === 401 || new Date().getTime() >= exp) {
 			baseApi.dispatch(logoutAction())
 			baseApi.dispatch(api.util.resetApiState())
-      // do not replace pathname with variable ROUTES, it makes cycle deps
+			// do not replace pathname with variable ROUTES, it makes cycle deps
 			window.location.pathname = '/sign-in'
 		}
 	}

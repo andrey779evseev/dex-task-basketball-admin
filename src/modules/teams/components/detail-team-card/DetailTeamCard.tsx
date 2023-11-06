@@ -1,3 +1,4 @@
+import { useDeleteImageMutation } from '@api/images/imagesApi'
 import { ITeam } from '@api/teams/dto/ITeam'
 import { useDeleteTeamMutation } from '@api/teams/teamsApi'
 import PenIcon from '@assets/icons/PenIcon'
@@ -9,7 +10,6 @@ import { ROUTES } from '@pages/router'
 import { memo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import s from './DetailTeamCard.module.scss'
-import { useDeleteImageMutation } from '@api/images/imagesApi'
 
 interface Props {
 	team: ITeam
@@ -18,12 +18,16 @@ interface Props {
 const DetailTeamCard = memo((props: Props) => {
 	const { team } = props
 	const [isDeleteModalOpened, { open, close }] = useDisclosure(false)
-	const [deleteTeam, { isLoading: isLoadingDeleteTeam }] = useDeleteTeamMutation()
-	const [deleteImage, { isLoading: isLoadingDeleteImage }] = useDeleteImageMutation()
+	const [deleteTeam, { isLoading: isLoadingDeleteTeam }] =
+		useDeleteTeamMutation()
+	const [deleteImage, { isLoading: isLoadingDeleteImage }] =
+		useDeleteImageMutation()
 	const navigate = useNavigate()
 
 	const removeTeam = async () => {
-    await deleteImage({fileName: team.imageUrl.split('/').reverse()[0]}).unwrap()
+		await deleteImage({
+			fileName: team.imageUrl.split('/').reverse()[0],
+		}).unwrap()
 		await deleteTeam({ id: team.id }).unwrap()
 		close()
 		navigate(ROUTES.Teams)
@@ -69,13 +73,13 @@ const DetailTeamCard = memo((props: Props) => {
 				</div>
 			</div>
 
-      <ConfirmModal 
-        isOpen={isDeleteModalOpened}
-        close={close}
-        onConfirm={removeTeam}
-        isLoading={isLoadingDeleteImage || isLoadingDeleteTeam}
-        title={`Delete team "${team.name}"`}
-      />
+			<ConfirmModal
+				isOpen={isDeleteModalOpened}
+				close={close}
+				onConfirm={removeTeam}
+				isLoading={isLoadingDeleteImage || isLoadingDeleteTeam}
+				title={`Delete team "${team.name}"`}
+			/>
 		</div>
 	)
 })

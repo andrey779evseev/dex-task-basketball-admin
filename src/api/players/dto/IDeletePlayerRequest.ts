@@ -1,3 +1,3 @@
 export interface IDeletePlayerRequest {
-  id: number
+	id: number
 }

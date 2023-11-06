@@ -1,11 +1,11 @@
+import { api } from '@api/common/api'
 import { IPaginatedResponse } from '@api/common/dto/IPaginatedResponse'
 import { ICreatePlayerRequest } from './dto/ICreatePlayerRequest'
+import { IDeletePlayerRequest } from './dto/IDeletePlayerRequest'
 import { IGetPlayerRequest } from './dto/IGetPlayerRequest'
 import { IGetPlayersRequest } from './dto/IGetPlayersRequest'
 import { IPlayer } from './dto/IPlayer'
 import { IUpdatePlayerRequest } from './dto/IUpdatePlayerRequest'
-import { api } from '@api/common/api'
-import { IDeletePlayerRequest } from './dto/IDeletePlayerRequest'
 
 export const playersApi = api.injectEndpoints({
 	endpoints: (builder) => ({
@@ -20,7 +20,7 @@ export const playersApi = api.injectEndpoints({
 					PageSize: payload.size,
 				},
 			}),
-      providesTags: ['Players'],
+			providesTags: ['Players'],
 		}),
 		getPlayer: builder.query<IPlayer, IGetPlayerRequest>({
 			query: (payload) => ({
@@ -30,13 +30,13 @@ export const playersApi = api.injectEndpoints({
 					id: payload.id,
 				},
 			}),
-      providesTags: (_result, _error, arg) => [{ type: 'Player', id: arg.id }],
+			providesTags: (_result, _error, arg) => [{ type: 'Player', id: arg.id }],
 		}),
-    getPositions: builder.query<string[], void>({
+		getPositions: builder.query<string[], void>({
 			query: () => ({
 				url: 'Player/GetPositions',
 				method: 'GET',
-			})
+			}),
 		}),
 		createPlayer: builder.mutation<IPlayer, ICreatePlayerRequest>({
 			query: (payload) => ({
@@ -44,7 +44,7 @@ export const playersApi = api.injectEndpoints({
 				method: 'POST',
 				body: payload,
 			}),
-      invalidatesTags: ['Players'],
+			invalidatesTags: ['Players'],
 		}),
 		updatePlayer: builder.mutation<IPlayer, IUpdatePlayerRequest>({
 			query: (payload) => ({
@@ -52,7 +52,7 @@ export const playersApi = api.injectEndpoints({
 				method: 'PUT',
 				body: payload,
 			}),
-      invalidatesTags: (_result, _error, arg) => [
+			invalidatesTags: (_result, _error, arg) => [
 				{ type: 'Player', id: arg.id },
 				'Players',
 			],
@@ -61,9 +61,9 @@ export const playersApi = api.injectEndpoints({
 			query: (payload) => ({
 				url: 'Player/Delete',
 				method: 'DELETE',
-        params: payload
+				params: payload,
 			}),
-      invalidatesTags: (_result, _error, arg) => [
+			invalidatesTags: (_result, _error, arg) => [
 				{ type: 'Player', id: arg.id },
 				'Players',
 			],
@@ -74,8 +74,8 @@ export const playersApi = api.injectEndpoints({
 export const {
 	useGetPlayersQuery,
 	useGetPlayerQuery,
-  useGetPositionsQuery,
+	useGetPositionsQuery,
 	useCreatePlayerMutation,
 	useUpdatePlayerMutation,
-  useDeletePlayerMutation
+	useDeletePlayerMutation,
 } = playersApi

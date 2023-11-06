@@ -1,3 +1,3 @@
 export interface IDeleteImageRequest {
-  fileName: string
+	fileName: string
 }

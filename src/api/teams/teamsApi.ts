@@ -1,11 +1,11 @@
+import { api } from '@api/common/api'
 import { IPaginatedResponse } from '@api/common/dto/IPaginatedResponse'
 import { ICreateTeamRequest } from './dto/ICreateTeamRequest'
+import { IDeleteTeamRequest } from './dto/IDeleteTeamRequest'
 import { IGetTeamRequest } from './dto/IGetTeamRequest'
 import { IGetTeamsRequest } from './dto/IGetTeamsRequest'
 import { ITeam } from './dto/ITeam'
 import { IUpdateTeamRequest } from './dto/IUpdateTeamRequest'
-import { api } from '@api/common/api'
-import { IDeleteTeamRequest } from './dto/IDeleteTeamRequest'
 
 export const teamsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
@@ -70,5 +70,5 @@ export const {
 	useLazyGetTeamQuery,
 	useCreateTeamMutation,
 	useUpdateTeamMutation,
-  useDeleteTeamMutation
+	useDeleteTeamMutation,
 } = teamsApi

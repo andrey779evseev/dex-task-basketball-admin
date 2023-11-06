@@ -11,9 +11,9 @@ const App = () => {
 	return (
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
-        <MantineProvider>
+				<MantineProvider>
 					<Router />
-        </MantineProvider>
+				</MantineProvider>
 				<Toaster />
 			</PersistGate>
 		</Provider>
