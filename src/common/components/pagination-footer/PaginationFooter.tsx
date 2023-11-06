@@ -27,7 +27,10 @@ const PaginationFooter = memo((props: Props) => {
 			<PaginatedSelect
 				options={sizeOptions}
 				value={sizeOption}
-				onChange={setSizeOption}
+				onChange={(option) => {
+          setPage(1)
+          setSizeOption(option)
+        }}
 			/>
 		</div>
 	)

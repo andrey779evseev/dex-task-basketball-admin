@@ -9,19 +9,19 @@
 	gap: 32px;
 
 	.header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
 		gap: 24px;
 
 		.search_input {
-			width: calc((100% - 48px) / 3);
+			width: 100%;
 		}
 
 		.add_button_container {
 			width: 100%;
 			display: flex;
 			justify-content: end;
+      grid-column: 2 span;
 
       a {
         width: fit-content;
@@ -37,9 +37,11 @@
 		gap: 24px;
 
 		.header {
-			.search_input {
-				width: calc((100% - 24px) / 2);
-			}
+			grid-template-columns: repeat(2, 1fr);
+
+      .add_button_container {
+        grid-column: auto;
+      }
 		}
 	}
 
@@ -47,6 +49,7 @@
 		gap: 16px;
 
 		.header {
+      display: flex;
 			flex-direction: column;
 			gap: 16px;
 
@@ -57,9 +60,14 @@
 			.add_button_container {
 				display: block;
 				width: 100%;
-				.add_button {
-					width: 100%;
-				}
+
+        a {
+          width: 100%;
+
+          .add_button {
+            width: 100%;
+          }
+        }
 			}
 		}
 	}
