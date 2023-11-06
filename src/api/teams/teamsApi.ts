@@ -5,6 +5,7 @@ import { IGetTeamsRequest } from './dto/IGetTeamsRequest'
 import { ITeam } from './dto/ITeam'
 import { IUpdateTeamRequest } from './dto/IUpdateTeamRequest'
 import { api } from '@api/common/api'
+import { IDeleteTeamRequest } from './dto/IDeleteTeamRequest'
 
 export const teamsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
@@ -49,13 +50,25 @@ export const teamsApi = api.injectEndpoints({
 				'Teams',
 			],
 		}),
+		deleteTeam: builder.mutation<ITeam, IDeleteTeamRequest>({
+			query: (payload) => ({
+				url: 'Team/Delete',
+				method: 'DELETE',
+				params: payload,
+			}),
+			invalidatesTags: (_result, _error, arg) => [
+				{ type: 'Team', id: arg.id },
+				'Teams',
+			],
+		}),
 	}),
 })
 
 export const {
 	useGetTeamsQuery,
 	useGetTeamQuery,
+	useLazyGetTeamQuery,
 	useCreateTeamMutation,
 	useUpdateTeamMutation,
-	useLazyGetTeamQuery,
+  useDeleteTeamMutation
 } = teamsApi

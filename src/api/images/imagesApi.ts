@@ -1,4 +1,5 @@
 import { api } from '@api/common/api'
+import { IDeleteImageRequest } from './dto/IDeleteImageReauest'
 
 export const imagesApi = api.injectEndpoints({
 	endpoints: (builder) => ({
@@ -9,7 +10,14 @@ export const imagesApi = api.injectEndpoints({
 				body: payload,
 			}),
 		}),
+		deleteImage: builder.mutation<void, IDeleteImageRequest>({
+			query: (payload) => ({
+				url: 'Image/DeleteImage',
+				method: 'DELETE',
+				params: payload
+			}),
+		}),
 	}),
 })
 
-export const { useSaveImageMutation } = imagesApi
+export const { useSaveImageMutation, useDeleteImageMutation } = imagesApi

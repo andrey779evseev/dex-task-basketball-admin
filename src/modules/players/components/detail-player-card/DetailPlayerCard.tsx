@@ -1,12 +1,16 @@
 import { IPlayer } from '@api/players/dto/IPlayer'
+import { useDeletePlayerMutation } from '@api/players/playersApi'
 import { useGetTeamQuery } from '@api/teams/teamsApi'
 import PenIcon from '@assets/icons/PenIcon'
 import TrashIcon from '@assets/icons/TrashIcon'
 import Breadcrumbs from '@components/ui/breadcrumbs/Breadcrumbs'
+import ConfirmModal from '@components/ui/confirm-modal/ConfirmModal'
+import { useDisclosure } from '@mantine/hooks'
 import { ROUTES } from '@pages/router'
 import { memo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import s from './DetailPlayerCard.module.scss'
+import { useDeleteImageMutation } from '@api/images/imagesApi'
 
 interface Props {
 	player: IPlayer
@@ -15,6 +19,17 @@ interface Props {
 const DetailPlayerCard = memo((props: Props) => {
 	const { player } = props
 	const { data: team, isError } = useGetTeamQuery({ id: player.team })
+  const [isDeleteModalOpened, { open, close }] = useDisclosure(false)
+	const [deletePlayer, { isLoading: isLoadingDeletePlayer }] = useDeletePlayerMutation()
+  const [deleteImage, { isLoading: isLoadingDeleteImage }] = useDeleteImageMutation()
+	const navigate = useNavigate()
+
+	const removePlayer = async () => {
+    await deleteImage({fileName: player.avatarUrl.split('/').reverse()[0]}).unwrap()
+		await deletePlayer({ id: player.id }).unwrap()
+		close()
+		navigate(ROUTES.Players)
+	}
 
 	if (team === undefined || isError) return null
 
@@ -28,7 +43,7 @@ const DetailPlayerCard = memo((props: Props) => {
 							<PenIcon />
 						</button>
 					</Link>
-					<button className={s.action}>
+					<button className={s.action} onClick={() => open()}>
 						<TrashIcon />
 					</button>
 				</div>
@@ -73,6 +88,14 @@ const DetailPlayerCard = memo((props: Props) => {
 					</div>
 				</div>
 			</div>
+
+      <ConfirmModal 
+        isOpen={isDeleteModalOpened}
+        close={close}
+        onConfirm={removePlayer}
+        isLoading={isLoadingDeleteImage || isLoadingDeletePlayer}
+        title={`Delete player "${player.name}"`}
+      />
 		</div>
 	)
 })

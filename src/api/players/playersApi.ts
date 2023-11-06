@@ -5,6 +5,7 @@ import { IGetPlayersRequest } from './dto/IGetPlayersRequest'
 import { IPlayer } from './dto/IPlayer'
 import { IUpdatePlayerRequest } from './dto/IUpdatePlayerRequest'
 import { api } from '@api/common/api'
+import { IDeletePlayerRequest } from './dto/IDeletePlayerRequest'
 
 export const playersApi = api.injectEndpoints({
 	endpoints: (builder) => ({
@@ -31,6 +32,12 @@ export const playersApi = api.injectEndpoints({
 			}),
       providesTags: (_result, _error, arg) => [{ type: 'Player', id: arg.id }],
 		}),
+    getPositions: builder.query<string[], void>({
+			query: () => ({
+				url: 'Player/GetPositions',
+				method: 'GET',
+			})
+		}),
 		createPlayer: builder.mutation<IPlayer, ICreatePlayerRequest>({
 			query: (payload) => ({
 				url: 'Player/Add',
@@ -50,11 +57,16 @@ export const playersApi = api.injectEndpoints({
 				'Players',
 			],
 		}),
-		getPositions: builder.query<string[], void>({
-			query: () => ({
-				url: 'Player/GetPositions',
-				method: 'GET',
-			})
+		deletePlayer: builder.mutation<IPlayer, IDeletePlayerRequest>({
+			query: (payload) => ({
+				url: 'Player/Delete',
+				method: 'DELETE',
+        params: payload
+			}),
+      invalidatesTags: (_result, _error, arg) => [
+				{ type: 'Player', id: arg.id },
+				'Players',
+			],
 		}),
 	}),
 })
@@ -62,7 +74,8 @@ export const playersApi = api.injectEndpoints({
 export const {
 	useGetPlayersQuery,
 	useGetPlayerQuery,
+  useGetPositionsQuery,
 	useCreatePlayerMutation,
 	useUpdatePlayerMutation,
-  useGetPositionsQuery
+  useDeletePlayerMutation
 } = playersApi
