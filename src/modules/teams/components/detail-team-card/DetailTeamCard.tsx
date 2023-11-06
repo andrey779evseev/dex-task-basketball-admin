@@ -45,10 +45,10 @@ const DetailTeamCard = memo((props: Props) => {
 							<h3 className={s.label}>Division</h3>
 							<p className={s.description}>{team.division}</p>
 						</div>
-					</div>
-					<div className={s.combine}>
-						<h3 className={s.label}>Conference</h3>
-						<p className={s.description}>{team.conference}</p>
+						<div className={s.combine}>
+							<h3 className={s.label}>Conference</h3>
+							<p className={s.description}>{team.conference}</p>
+						</div>
 					</div>
 				</div>
 			</div>

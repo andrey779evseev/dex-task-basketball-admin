@@ -24,11 +24,11 @@ export const ROUTES = {
 	EditTeamStatic: '/team/:teamId/edit',
 	EditTeam: (teamId: number | string) => `/team/${teamId}/edit`,
 	Players: '/players',
-	PlayerStatic: '/player/:teamId',
-	Player: (teamId: number | string) => `/player/${teamId}`,
+	PlayerStatic: '/player/:playerId',
+	Player: (playerId: number | string) => `/player/${playerId}`,
 	CreatePlayer: '/player/create',
-	EditPlayerStatic: '/player/:teamId/edit',
-	EditPlayer: (teamId: number | string) => `/player/${teamId}/edit`,
+	EditPlayerStatic: '/player/:playerId/edit',
+	EditPlayer: (playerId: number | string) => `/player/${playerId}/edit`,
 }
 
 const router = createBrowserRouter([
