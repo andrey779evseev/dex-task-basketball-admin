@@ -1,9 +1,9 @@
 import { z } from 'zod'
 
 export const TeamFormValidator = z.object({
-	name: z.string().min(3),
-	division: z.string().min(3),
-	conference: z.string().min(3),
+	name: z.string().min(3).max(50),
+	division: z.string().min(3).max(50),
+	conference: z.string().min(3).max(50),
 	foundationYear: z
 		.number()
 		.min(1800, 'Year must not be less than 1800')

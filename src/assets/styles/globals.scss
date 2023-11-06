@@ -1,3 +1,22 @@
+@import '@assets/styles/colors.scss';
+
+@font-face {
+	font-family: 'Avenir Black';
+	src: url('../fonts/Avenir\ Black.ttf');
+}
+
+@font-face {
+	font-family: 'Avenir Book';
+	src: url('../fonts/Avenir\ Book.ttf');
+}
+
+@font-face {
+	font-family: 'Avenir Medium';
+	src: url('../fonts/Avenir\ Medium.ttf');
+}
+
+//resets
+
 html,
 body {
 	margin: 0;
@@ -30,19 +49,4 @@ a {
 
 a {
 	text-decoration: none;
-}
-
-@font-face {
-	font-family: 'Avenir Black';
-	src: url('../fonts/Avenir\ Black.ttf');
-}
-
-@font-face {
-	font-family: 'Avenir Book';
-	src: url('../fonts/Avenir\ Book.ttf');
-}
-
-@font-face {
-	font-family: 'Avenir Medium';
-	src: url('../fonts/Avenir\ Medium.ttf');
 }

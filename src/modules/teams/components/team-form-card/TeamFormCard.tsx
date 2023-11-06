@@ -53,7 +53,11 @@ const TeamFormCard = memo((props: Props) => {
 		} catch (err) {
 			console.error(err)
 			dispatch(
-				addNotificationAction("Something wen't wrong, while creating team"),
+				addNotificationAction(
+					`Something wen't wrong, while ${
+						isEdit ? 'updating' : 'creating'
+					} team`,
+				),
 			)
 		}
 	}

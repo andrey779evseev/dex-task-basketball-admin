@@ -13,11 +13,11 @@ interface Props {
 	label: string
 	error?: FieldError
 	disabled?: boolean
-	type?: 'text' | 'password'
+	type?: 'text' | 'password' | 'number'
 
 	register?: UseFormRegisterReturn
 	onChange?: (newValue: string) => void
-	value?: string
+	value?: string | number
 }
 
 const Input = memo((props: Props) => {
@@ -34,10 +34,7 @@ const Input = memo((props: Props) => {
 	const [isShowPassword, setIsShowPassword] = useState(false)
 
 	const properties = useMemo(() => {
-		if (
-			register === undefined &&
-			(value === undefined || onChange === undefined)
-		)
+		if (register === undefined && onChange === undefined)
 			throw new Error(
 				'Either register or pair value and onChange must be specified',
 			)

@@ -1,4 +1,4 @@
-import { api } from '@core/redux/store'
+import { api } from '@api/common/api'
 
 export const imagesApi = api.injectEndpoints({
 	endpoints: (builder) => ({

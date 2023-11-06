@@ -4,7 +4,7 @@ export interface IPlayer {
 	number: number
 	position: string
 	team: number
-	birthday: string
+	birthday: string | Date
 	height: number
 	weight: number
 	avatarUrl: string

@@ -23,9 +23,13 @@
 			display: flex;
 			justify-content: end;
 
-			.add_button {
-				width: fit-content;
-			}
+      a {
+        width: fit-content;
+        
+        .add_button {
+          width: fit-content;
+        }
+      }
 		}
 	}
 

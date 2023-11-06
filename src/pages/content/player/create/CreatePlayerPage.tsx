@@ -1,5 +1,7 @@
+import PlayerFormCard from '@modules/players/components/player-form-card/PlayerFormCard'
+
 const CreatePlayerPage = () => {
-	return <div>create player page</div>
+	return <PlayerFormCard />
 }
 
 export default CreatePlayerPage

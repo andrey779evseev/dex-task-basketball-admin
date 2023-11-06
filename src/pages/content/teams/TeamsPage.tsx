@@ -42,12 +42,14 @@ const TeamsPage = () => {
 					className={s.search_input}
 				/>
 
-				<Link to={ROUTES.CreateTeam} className={s.add_button_container}>
-					<Button className={s.add_button}>
-						Add
-						<PlusIcon />
-					</Button>
-				</Link>
+				<div className={s.add_button_container}>
+					<Link to={ROUTES.CreateTeam}>
+						<Button className={s.add_button}>
+							Add
+							<PlusIcon />
+						</Button>
+					</Link>
+				</div>
 			</div>
 
 			{pages.data.length === 0 ? (

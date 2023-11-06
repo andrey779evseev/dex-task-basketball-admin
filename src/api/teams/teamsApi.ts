@@ -1,10 +1,10 @@
 import { IPaginatedResponse } from '@api/common/dto/IPaginatedResponse'
-import { api } from '@core/redux/store'
-import { ITeamForm } from '@modules/teams/interfaces/ITeamForm'
+import { ICreateTeamRequest } from './dto/ICreateTeamRequest'
 import { IGetTeamRequest } from './dto/IGetTeamRequest'
 import { IGetTeamsRequest } from './dto/IGetTeamsRequest'
 import { ITeam } from './dto/ITeam'
 import { IUpdateTeamRequest } from './dto/IUpdateTeamRequest'
+import { api } from '@api/common/api'
 
 export const teamsApi = api.injectEndpoints({
 	endpoints: (builder) => ({
@@ -30,7 +30,7 @@ export const teamsApi = api.injectEndpoints({
 			}),
 			providesTags: (_result, _error, arg) => [{ type: 'Team', id: arg.id }],
 		}),
-		createTeam: builder.mutation<ITeam, ITeamForm>({
+		createTeam: builder.mutation<ITeam, ICreateTeamRequest>({
 			query: (payload) => ({
 				url: 'Team/Add',
 				method: 'POST',

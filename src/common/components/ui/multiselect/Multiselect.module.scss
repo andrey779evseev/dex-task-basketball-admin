@@ -14,13 +14,16 @@
 			border-color: $gray-40;
 		}
 
-		&.not_empty {
-			background: $gray-20;
-		}
-
 		.value_container {
 			padding: 7px 12px;
 			gap: 4px;
+
+      .placeholder {
+        font-family: 'Avenir Medium';
+        font-weight: 500;
+        font-size: 14px;
+        color: $gray-80;
+      }
 
 			.multi_value {
 				margin: 0;

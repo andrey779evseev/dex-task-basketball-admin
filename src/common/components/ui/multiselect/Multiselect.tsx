@@ -46,6 +46,7 @@ const Multiselect = memo((props: Props) => {
 			classNames={{
 				control: () => s.control,
 				valueContainer: () => s.value_container,
+				placeholder: () => s.placeholder,
 				multiValue: () => s.multi_value,
 				multiValueLabel: () => s.multi_value_label,
 				multiValueRemove: () => s.multi_value_remove,

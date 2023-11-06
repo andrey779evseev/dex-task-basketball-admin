@@ -1,37 +1,20 @@
+import { api } from '@api/common/api'
 import { persistedAuthorizationReducer } from '@modules/authorization/reducer'
 import { configureStore } from '@reduxjs/toolkit'
-import queryString from 'query-string'
-import {
-	FLUSH,
-	PAUSE,
-	PERSIST,
-	persistStore,
-	PURGE,
-	REGISTER,
-	REHYDRATE,
-} from 'redux-persist'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { TypedUseSelectorHook } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist'
 import { notificationsSlice } from './notificationSlice'
 
-export const api = createApi({
-	baseQuery: fetchBaseQuery({
-		baseUrl: import.meta.env.VITE_REACT_APP_API,
-		prepareHeaders: (headers, { getState }) => {
-			const token = (getState() as RootState).authorization.user?.token
-			if (token) {
-				headers.set('Authorization', `Bearer ${token}`)
-			}
-			return headers
-		},
-		paramsSerializer: (params) => {
-			return queryString.stringify(params)
-		},
-	}),
-	endpoints: () => ({}),
-	tagTypes: ['Teams', 'Team'],
-})
+
 
 const store = configureStore({
 	devTools: import.meta.env.NODE_ENV !== 'production',

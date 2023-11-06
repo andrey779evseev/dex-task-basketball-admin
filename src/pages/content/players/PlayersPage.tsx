@@ -1,6 +1,7 @@
 import { IPlayer } from '@api/players/dto/IPlayer'
 import { useGetPlayersQuery } from '@api/players/playersApi'
 import { useGetTeamsQuery, useLazyGetTeamQuery } from '@api/teams/teamsApi'
+import LoaderIcon from '@assets/icons/LoaderIcon'
 import PlusIcon from '@assets/icons/PlusIcon'
 import SearchIcon from '@assets/icons/SearchIcon'
 import CardsGrid from '@components/cards-grid/CardsGrid'
@@ -39,6 +40,7 @@ const PlayersPage = () => {
 		teamIds: selectedTeams.map((team) => team.value as number),
 	})
 	const [trigger] = useLazyGetTeamQuery()
+	const [isLoadingFullPlayers, setIsLoadingFullPlayers] = useState(true)
 
 	const teamsOptions = useMemo(() => {
 		return (teams?.data ?? []).map((team) => ({
@@ -48,7 +50,8 @@ const PlayersPage = () => {
 	}, [teams])
 
 	useEffect(() => {
-		(async () => {
+		// eslint-disable-next-line no-extra-semi
+		;(async () => {
 			const res = await Promise.all(
 				(pages?.data ?? []).map(async (player) => {
 					const team = await trigger({ id: player.team }).unwrap()
@@ -59,8 +62,16 @@ const PlayersPage = () => {
 				}),
 			)
 			setPlayers(res)
+			setIsLoadingFullPlayers(false)
 		})()
 	}, [pages, trigger])
+
+	if (isLoadingFullPlayers)
+		return (
+			<div className={s.loader}>
+				<LoaderIcon size={150} />
+			</div>
+		)
 
 	if (
 		teams === undefined ||
@@ -88,12 +99,14 @@ const PlayersPage = () => {
 					className={s.teams_select}
 				/>
 
-				<Link to={ROUTES.CreatePlayer} className={s.add_button_container}>
-					<Button className={s.add_button}>
-						Add
-						<PlusIcon />
-					</Button>
-				</Link>
+				<div className={s.add_button_container}>
+					<Link to={ROUTES.CreatePlayer}>
+						<Button className={s.add_button}>
+							Add
+							<PlusIcon />
+						</Button>
+					</Link>
+				</div>
 			</div>
 
 			{pages.data.length === 0 ? (
