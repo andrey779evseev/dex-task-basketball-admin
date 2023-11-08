@@ -12,11 +12,27 @@
 	align-items: center;
 	z-index: $z-modal;
 
+	&.animate_in_overlay {
+		animation: $animate-fade-in;
+	}
+
+	&.animate_out_overlay {
+		animation: $animate-fade-out;
+	}
+
 	.modal {
 		border-radius: 10px;
 		background: $white;
 		border: 0.5px solid $gray-40;
 		padding: 8px;
+
+    &.animate_in {
+      animation: puff-in-center 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    }
+
+    &.animate_out {
+      animation: puff-out-center 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    }
 
 		.header {
 			display: flex;
@@ -42,5 +58,31 @@
 			grid-template-columns: repeat(2, 1fr);
 			gap: 16px;
 		}
+	}
+}
+
+@keyframes puff-in-center {
+	0% {
+		transform: scale(2);
+		filter: blur(4px);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		filter: blur(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes puff-out-center {
+	0% {
+		transform: scale(1);
+		filter: blur(0px);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(2);
+		filter: blur(4px);
+		opacity: 0;
 	}
 }
