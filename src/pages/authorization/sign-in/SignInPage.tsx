@@ -1,12 +1,10 @@
-import SignInForm from '@modules/authorization/components/sign-in/SignInForm'
+import { SignInForm } from '@modules/authorization/components/SignInForm/SignInForm'
 import s from './SignInPage.module.scss'
 
-const SignInPage = () => {
+export const SignInPage = () => {
 	return (
 		<div className={s.container}>
 			<SignInForm />
 		</div>
 	)
 }
-
-export default SignInPage

@@ -1,11 +1,11 @@
 import { useGetPlayersQuery } from '@api/players/playersApi'
 import { useGetTeamQuery } from '@api/teams/teamsApi'
-import DetailTeamCard from '@modules/teams/components/detail-team-card/DetailTeamCard'
-import PlayersTable from '@modules/teams/components/players-table/PlayersTable'
+import { DetailTeamCard } from '@modules/teams/components/DetailTeamCard/DetailTeamCard'
+import { PlayersTable } from '@modules/teams/components/PlayersTable/PlayersTable'
 import { useParams } from 'react-router-dom'
 import s from './TeamPage.module.scss'
 
-const TeamPage = () => {
+export const TeamPage = () => {
 	const { teamId } = useParams()
 	const { data: team, isError: isTeamError } = useGetTeamQuery({
 		id: parseInt(teamId!),
@@ -33,5 +33,3 @@ const TeamPage = () => {
 		</div>
 	)
 }
-
-export default TeamPage

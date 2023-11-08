@@ -1,8 +1,8 @@
 import { useGetPlayerQuery } from '@api/players/playersApi'
-import DetailPlayerCard from '@modules/players/components/detail-player-card/DetailPlayerCard'
+import { DetailPlayerCard } from '@modules/players/components/DetailPlayerCard/DetailPlayerCard'
 import { useParams } from 'react-router-dom'
 
-const PlayerPage = () => {
+export const PlayerPage = () => {
 	const { playerId } = useParams()
 	const { data: player, isError } = useGetPlayerQuery({
 		id: parseInt(playerId!),
@@ -12,5 +12,3 @@ const PlayerPage = () => {
 
 	return <DetailPlayerCard player={player} />
 }
-
-export default PlayerPage

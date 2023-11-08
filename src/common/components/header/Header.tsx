@@ -1,14 +1,14 @@
-import MenuIcon from '@assets/icons/MenuIcon'
+import { MenuIcon } from '@assets/icons/MenuIcon'
 import logo from '@assets/images/logo.svg'
-import Menu from '@components/menu/Menu'
-import MiniUserInfo from '@components/mini-user-info/MiniUserInfo'
+import { Menu } from '@components/Menu/Menu'
+import { MiniUserInfo } from '@components/MiniUserInfo/MiniUserInfo'
 import { useAnimationState } from '@hooks/useAnimationState'
 import { ROUTES } from '@pages/router'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import s from './Header.module.scss'
 
-const Header = () => {
+export const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const animateIsOpen = useAnimationState(isMenuOpen)
 
@@ -36,5 +36,3 @@ const Header = () => {
 		</header>
 	)
 }
-
-export default Header

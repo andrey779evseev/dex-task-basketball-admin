@@ -1,11 +1,9 @@
-import { memo } from 'react'
-
 interface Props {
 	size?: number
 	className?: string
 }
 
-const LoaderIcon = memo((props: Props) => {
+export const LoaderIcon = (props: Props) => {
 	const { size = 24, className } = props
 	return (
 		<svg
@@ -28,6 +26,4 @@ const LoaderIcon = memo((props: Props) => {
 			</path>
 		</svg>
 	)
-})
-
-export default LoaderIcon
+}

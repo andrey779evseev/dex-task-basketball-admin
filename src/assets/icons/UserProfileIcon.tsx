@@ -1,10 +1,8 @@
-import { memo } from 'react'
-
 interface Props {
 	className?: string
 }
 
-const UserProfileIcon = memo((props: Props) => {
+export const UserProfileIcon = (props: Props) => {
 	const { className } = props
 	return (
 		<svg
@@ -22,6 +20,4 @@ const UserProfileIcon = memo((props: Props) => {
 			/>
 		</svg>
 	)
-})
-
-export default UserProfileIcon
+}

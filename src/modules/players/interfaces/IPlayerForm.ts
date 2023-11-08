@@ -1,4 +1,10 @@
-import { z } from 'zod'
-import { PlayerFormValidator } from '../validators/PlayerFormValidator'
-
-export interface IPlayerForm extends z.infer<typeof PlayerFormValidator> {}
+export interface IPlayerForm {
+	name: string
+	number?: number
+	position: string
+	team: number
+	birthday: Date
+	height: number
+	weight: number
+	avatarUrl: string
+}

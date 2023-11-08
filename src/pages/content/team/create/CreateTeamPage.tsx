@@ -1,7 +1,5 @@
-import TeamFormCard from '@modules/teams/components/team-form-card/TeamFormCard'
+import { TeamFormCard } from '@modules/teams/components/TeamFormCard/TeamFormCard'
 
-const CreateTeamPage = () => {
+export const CreateTeamPage = () => {
 	return <TeamFormCard />
 }
-
-export default CreateTeamPage

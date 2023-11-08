@@ -1,6 +1,6 @@
-import GroupPersonIcon from '@assets/icons/GroupPersonIcon'
-import LogoutIcon from '@assets/icons/LogoutIcon'
-import PersonIcon from '@assets/icons/PersonIcon'
+import { GroupPersonIcon } from '@assets/icons/GroupPersonIcon'
+import { LogoutIcon } from '@assets/icons/LogoutIcon'
+import { PersonIcon } from '@assets/icons/PersonIcon'
 import { useLogout } from '@hooks/logout'
 import { ROUTES } from '@pages/router'
 import classNames from 'classnames'
@@ -8,7 +8,7 @@ import { useMemo } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import s from './Navbar.module.scss'
 
-const Navbar = () => {
+export const Navbar = () => {
 	const logout = useLogout()
 	const { pathname } = useLocation()
 
@@ -53,5 +53,3 @@ const Navbar = () => {
 		</aside>
 	)
 }
-
-export default Navbar

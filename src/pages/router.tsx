@@ -1,17 +1,17 @@
-import AuthorizationLayout from '@pages/authorization/layout/AuthorizationLayout'
-import SignInPage from '@pages/authorization/sign-in/SignInPage'
-import SignUpPage from '@pages/authorization/sing-up/SignUpPage'
+import { AuthorizationLayout } from '@pages/authorization/layout/AuthorizationLayout'
+import { SignInPage } from '@pages/authorization/sign-in/SignInPage'
+import { SignUpPage } from '@pages/authorization/sing-up/SignUpPage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ProtectedLayout from './content/layout/ProtectedLayout'
-import CreatePlayerPage from './content/player/create/CreatePlayerPage'
-import EditPlayerPage from './content/player/edit/EditPlayerPage'
-import PlayerPage from './content/player/PlayerPage'
-import PlayersPage from './content/players/PlayersPage'
-import CreateTeamPage from './content/team/create/CreateTeamPage'
-import EditTeamPage from './content/team/edit/EditTeamPage'
-import TeamPage from './content/team/TeamPage'
-import TeamsPage from './content/teams/TeamsPage'
-import NotFoundPage from './not-found/NotFoundPage'
+import { ProtectedLayout } from './content/layout/ProtectedLayout'
+import { CreatePlayerPage } from './content/player/create/CreatePlayerPage'
+import { EditPlayerPage } from './content/player/edit/EditPlayerPage'
+import { PlayerPage } from './content/player/PlayerPage'
+import { PlayersPage } from './content/players/PlayersPage'
+import { CreateTeamPage } from './content/team/create/CreateTeamPage'
+import { EditTeamPage } from './content/team/edit/EditTeamPage'
+import { TeamPage } from './content/team/TeamPage'
+import { TeamsPage } from './content/teams/TeamsPage'
+import { NotFoundPage } from './not-found/NotFoundPage'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ROUTES = {
@@ -94,8 +94,6 @@ const router = createBrowserRouter([
 	},
 ])
 
-const Router = () => {
+export const Router = () => {
 	return <RouterProvider router={router} />
 }
-
-export default Router

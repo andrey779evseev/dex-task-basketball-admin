@@ -1,4 +1,4 @@
-const CalendarIcon = () => {
+export const CalendarIcon = () => {
 	return (
 		<svg
 			width='16'
@@ -14,5 +14,3 @@ const CalendarIcon = () => {
 		</svg>
 	)
 }
-
-export default CalendarIcon

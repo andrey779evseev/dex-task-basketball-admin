@@ -1,16 +1,15 @@
-import ChevronIcon from '@assets/icons/ChevronIcon'
-import CrossIcon from '@assets/icons/CrossIcon'
+import { ChevronIcon } from '@assets/icons/ChevronIcon'
+import { CrossIcon } from '@assets/icons/CrossIcon'
 import { IOption } from '@interfaces/IOption'
 import classNames from 'classnames'
-import { Children, memo } from 'react'
-import {
+import { Children } from 'react'
+import SelectBase, {
 	ClearIndicatorProps,
 	components,
 	DropdownIndicatorProps,
 	IndicatorSeparatorProps,
 	MultiValue,
 	MultiValueRemoveProps,
-	default as SelectBase,
 	ValueContainerProps,
 } from 'react-select'
 import s from './Multiselect.module.scss'
@@ -23,7 +22,7 @@ interface Props {
 	className?: string
 }
 
-const Multiselect = memo((props: Props) => {
+export const Multiselect = (props: Props) => {
 	const { value, onChange, options, side = 'bottom', className } = props
 	return (
 		<SelectBase
@@ -64,9 +63,7 @@ const Multiselect = memo((props: Props) => {
 			closeMenuOnSelect={false}
 		/>
 	)
-})
-
-export default Multiselect
+}
 
 const DropdownIndicator = (props: DropdownIndicatorProps<IOption, boolean>) => {
 	return (
@@ -98,33 +95,34 @@ const ClearIndicator = (props: ClearIndicatorProps<IOption>) => {
 	)
 }
 
-const ValueContainer = memo(
-	({ children, ...props }: ValueContainerProps<IOption>) => {
-		const { hasValue } = props
-		if (!hasValue) {
-			return (
-				<components.ValueContainer {...props}>
-					{children}
-				</components.ValueContainer>
-			)
-		}
-
-		const [selected, otherChildren] = children as (
-			| ReturnType<typeof Children.toArray>[]
-			| ReturnType<typeof Children.toArray>
-		)[]
-
-		const displaySelected =
-			Array.isArray(selected) && selected.length > 0 ? selected[0] : selected
-
+const ValueContainer = ({
+	children,
+	...props
+}: ValueContainerProps<IOption>) => {
+	const { hasValue } = props
+	if (!hasValue) {
 		return (
 			<components.ValueContainer {...props}>
-				{displaySelected}
-
-				{selected.length > 1 ? <span className={s.more}>...</span> : null}
-
-				{otherChildren}
+				{children}
 			</components.ValueContainer>
 		)
-	},
-)
+	}
+
+	const [selected, otherChildren] = children as (
+		| ReturnType<typeof Children.toArray>[]
+		| ReturnType<typeof Children.toArray>
+	)[]
+
+	const displaySelected =
+		Array.isArray(selected) && selected.length > 0 ? selected[0] : selected
+
+	return (
+		<components.ValueContainer {...props}>
+			{displaySelected}
+
+			{selected.length > 1 ? <span className={s.more}>...</span> : null}
+
+			{otherChildren}
+		</components.ValueContainer>
+	)
+}

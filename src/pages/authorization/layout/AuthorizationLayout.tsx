@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import s from './AuthorizationLayout.module.scss'
 
-const AuthorizationLayout = () => {
+export const AuthorizationLayout = () => {
 	const user = useUser()
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
@@ -29,5 +29,3 @@ const AuthorizationLayout = () => {
 		</main>
 	)
 }
-
-export default AuthorizationLayout

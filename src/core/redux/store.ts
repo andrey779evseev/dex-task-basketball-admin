@@ -14,7 +14,7 @@ import type { TypedUseSelectorHook } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { notificationsSlice } from './notificationSlice'
 
-const store = configureStore({
+export const store = configureStore({
 	devTools: import.meta.env.NODE_ENV !== 'production',
 	reducer: {
 		[api.reducerPath]: api.reducer,
@@ -36,4 +36,3 @@ export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 export const persistor = persistStore(store)
-export default store

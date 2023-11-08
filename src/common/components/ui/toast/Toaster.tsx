@@ -4,10 +4,10 @@ import {
 } from '@core/redux/notificationSlice'
 import { useAppDispatch, useAppSelector } from '@core/redux/store'
 import { useCallback } from 'react'
-import Toast from './Toast'
+import { Toast } from './Toast'
 import s from './Toaster.module.scss'
 
-const Toaster = () => {
+export const Toaster = () => {
 	const notifications = useAppSelector(selectNotifications)
 	const dispatch = useAppDispatch()
 
@@ -28,5 +28,3 @@ const Toaster = () => {
 		</div>
 	)
 }
-
-export default Toaster

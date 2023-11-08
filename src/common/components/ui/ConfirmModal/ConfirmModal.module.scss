@@ -1,0 +1,46 @@
+.overlay {
+	position: fixed;
+	bottom: 0;
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba($color: $gray-85, $alpha: 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: $z-modal;
+
+	.modal {
+		border-radius: 10px;
+		background: $white;
+		border: 0.5px solid $gray-40;
+		padding: 8px;
+
+		.header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 16px;
+			gap: 32px;
+
+			.title {
+				@include avenir-book;
+				font-size: 18px;
+				color: $gray-80;
+			}
+
+			svg {
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		.actions {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 16px;
+		}
+	}
+}

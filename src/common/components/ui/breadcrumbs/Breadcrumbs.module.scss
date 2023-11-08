@@ -1,15 +1,13 @@
-@import '@assets/styles/colors.scss';
-@import '@assets/styles/variables.scss';
-
 .breadcrumbs {
-	font: $avenir-medium-14;
+	@include avenir-medium;
+	font-size: 14px;
 	color: $red-80;
 
 	.divider {
 		color: $gray-60;
 	}
 
-	@media screen and (max-width: $screen-sm) {
+	@include breakpoint(sm) {
 		font-size: 13px;
 	}
 }

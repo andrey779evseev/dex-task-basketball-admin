@@ -1,14 +1,11 @@
-@import '@assets/styles/colors.scss';
-@import '@assets/styles/variables.scss';
-@import '@assets/styles/animations.scss';
-
 .container {
 	.checkbox_container {
 		display: grid;
 		grid-template-columns: 1em auto;
 		align-items: center;
 		gap: 8px;
-		font: $avenir-medium-14;
+		@include avenir-medium;
+		font-size: 14px;
 		color: $gray-80;
 		cursor: pointer;
 		width: fit-content;
@@ -90,7 +87,8 @@
 	}
 
 	.error {
-		font: $avenir-medium-12;
+		@include avenir-medium;
+		font-size: 12px;
 		margin-top: 2px;
 		color: $red-40;
 	}

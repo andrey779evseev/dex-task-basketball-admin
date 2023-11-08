@@ -1,5 +1,5 @@
-import ChevronIcon from '@assets/icons/ChevronIcon'
-import { memo, useEffect, useState } from 'react'
+import { ChevronIcon } from '@assets/icons/ChevronIcon'
+import { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import s from './Pagination.module.scss'
@@ -11,7 +11,7 @@ interface Props {
 	syncWithQuery?: boolean
 }
 
-const Pagination = memo((props: Props) => {
+export const Pagination = (props: Props) => {
 	const { pagesCount, page, setPage, syncWithQuery = true } = props
 	const [isInitializedPage, setIsInitializedPage] = useState(false)
 	const [searchParams] = useSearchParams()
@@ -59,6 +59,4 @@ const Pagination = memo((props: Props) => {
 			pageLinkClassName={s.control_link}
 		/>
 	)
-})
-
-export default Pagination
+}

@@ -1,6 +1,6 @@
-import LoaderIcon from '@assets/icons/LoaderIcon'
+import { LoaderIcon } from '@assets/icons/LoaderIcon'
 import classNames from 'classnames'
-import { memo, PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 import s from './Button.module.scss'
 
 interface Props extends PropsWithChildren {
@@ -12,7 +12,7 @@ interface Props extends PropsWithChildren {
 	className?: string
 }
 
-const Button = memo((props: Props) => {
+export const Button = (props: Props) => {
 	const {
 		children,
 		variant = 'primary',
@@ -38,6 +38,4 @@ const Button = memo((props: Props) => {
 			{children}
 		</button>
 	)
-})
-
-export default Button
+}

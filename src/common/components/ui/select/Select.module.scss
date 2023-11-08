@@ -1,14 +1,11 @@
-@import '@assets/styles/colors.scss';
-@import '@assets/styles/variables.scss';
-@import '@assets/styles/animations.scss';
-
 .container {
 	display: flex;
 	flex-direction: column;
 
 	.label {
 		color: $gray-80;
-		font: $avenir-medium-14;
+		@include avenir-medium;
+		font-size: 14px;
 		margin-bottom: 4px;
 	}
 
@@ -26,7 +23,8 @@
 
 				.placeholder,
 				.single_value {
-					font: $avenir-medium-14;
+					@include avenir-medium;
+					font-size: 14px;
 				}
 
 				.placeholder {
@@ -81,7 +79,8 @@
 					transition:
 						color 0.3s ease,
 						background 0.3s ease;
-					font: $avenir-medium-14;
+					@include avenir-medium;
+					font-size: 14px;
 					color: $gray-60;
 
 					&:not(:last-child) {
@@ -111,7 +110,8 @@
 	}
 
 	.error {
-		font: $avenir-medium-12;
+		@include avenir-medium;
+		font-size: 14px;
 		margin-top: 2px;
 		color: $red-40;
 	}

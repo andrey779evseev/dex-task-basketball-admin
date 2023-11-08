@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import s from './NotFoundPage.module.scss'
 
-const NotFoundPage = () => {
+export const NotFoundPage = () => {
 	const user = useUser()
 	const navigate = useNavigate()
 
@@ -25,5 +25,3 @@ const NotFoundPage = () => {
 		</main>
 	)
 }
-
-export default NotFoundPage

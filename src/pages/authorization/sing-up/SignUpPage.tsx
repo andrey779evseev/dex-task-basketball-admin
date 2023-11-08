@@ -1,12 +1,10 @@
-import SignUpForm from '@modules/authorization/components/sign-up/SignUpForm'
+import { SignUpForm } from '@modules/authorization/components/SignUpForm/SignUpForm'
 import s from './SignUpPage.module.scss'
 
-const SignUpPage = () => {
+export const SignUpPage = () => {
 	return (
 		<div className={s.container}>
 			<SignUpForm />
 		</div>
 	)
 }
-
-export default SignUpPage

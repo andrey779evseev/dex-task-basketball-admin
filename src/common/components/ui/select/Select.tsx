@@ -1,15 +1,13 @@
-import ChevronIcon from '@assets/icons/ChevronIcon'
-import CrossIcon from '@assets/icons/CrossIcon'
+import { ChevronIcon } from '@assets/icons/ChevronIcon'
+import { CrossIcon } from '@assets/icons/CrossIcon'
 import { IOption } from '@interfaces/IOption'
 import classNames from 'classnames'
-import { memo } from 'react'
 import { FieldError } from 'react-hook-form'
-import {
+import SelectBase, {
 	ClearIndicatorProps,
 	components,
 	DropdownIndicatorProps,
 	IndicatorSeparatorProps,
-	default as SelectBase,
 } from 'react-select'
 import s from './Select.module.scss'
 
@@ -24,7 +22,7 @@ interface Props {
 	error?: FieldError
 }
 
-const Select = memo((props: Props) => {
+export const Select = (props: Props) => {
 	const {
 		value,
 		onChange,
@@ -79,9 +77,7 @@ const Select = memo((props: Props) => {
 			{error !== undefined ? <p className={s.error}>{error.message}</p> : null}
 		</div>
 	)
-})
-
-export default Select
+}
 
 const DropdownIndicator = (props: DropdownIndicatorProps<IOption, boolean>) => {
 	return (

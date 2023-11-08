@@ -1,6 +1,3 @@
-@import '@assets/styles/colors.scss';
-@import '@assets/styles/variables.scss';
-
 .button {
 	background: $red-80;
 	height: 40px;
@@ -12,7 +9,8 @@
 	gap: 8px;
 	cursor: pointer;
 	padding: 8px 24px;
-	font: $avenir-medium-15;
+	@include avenir-medium;
+	font-size: 15px;
 
 	&.full {
 		width: 100%;

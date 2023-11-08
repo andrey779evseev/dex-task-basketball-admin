@@ -1,14 +1,14 @@
-import GroupPersonIcon from '@assets/icons/GroupPersonIcon'
-import LogoutIcon from '@assets/icons/LogoutIcon'
-import PersonIcon from '@assets/icons/PersonIcon'
-import MiniUserInfo from '@components/mini-user-info/MiniUserInfo'
+import { GroupPersonIcon } from '@assets/icons/GroupPersonIcon'
+import { LogoutIcon } from '@assets/icons/LogoutIcon'
+import { PersonIcon } from '@assets/icons/PersonIcon'
+import { MiniUserInfo } from '@components/MiniUserInfo/MiniUserInfo'
 import { useLogout } from '@hooks/logout'
 import { useClickOutside } from '@hooks/useClickOutside'
 import { useLockBodyScroll } from '@hooks/useLockBodyScroll'
 import { ROUTES } from '@pages/router'
 import classNames from 'classnames'
-import { memo } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useMemo } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import s from './Menu.module.scss'
 
 interface Props {
@@ -16,13 +16,14 @@ interface Props {
 	isOpen: boolean
 }
 
-const Menu = memo((props: Props) => {
+export const Menu = (props: Props) => {
 	const { close, isOpen } = props
 	const logout = useLogout()
 	const ref = useClickOutside(() => {
-		console.log('outside')
 		close()
 	})
+	const { pathname } = useLocation()
+	const page = useMemo(() => pathname.slice(1).split('/')[0], [pathname])
 	useLockBodyScroll()
 
 	return (
@@ -49,7 +50,7 @@ const Menu = memo((props: Props) => {
 								to={ROUTES.Teams}
 								className={({ isActive }) =>
 									classNames(s.link, {
-										[s.active]: isActive,
+										[s.active]: isActive || page === 'team',
 									})
 								}
 							>
@@ -62,7 +63,7 @@ const Menu = memo((props: Props) => {
 								to={ROUTES.Players}
 								className={({ isActive }) =>
 									classNames(s.link, {
-										[s.active]: isActive,
+										[s.active]: isActive || page === 'player',
 									})
 								}
 							>
@@ -79,6 +80,4 @@ const Menu = memo((props: Props) => {
 			</aside>
 		</div>
 	)
-})
-
-export default Menu
+}

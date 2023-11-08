@@ -27,6 +27,7 @@
 			"@helpers/*": ["./src/common/helpers/*"],
 			"@components/*": ["./src/common/components/*"],
 			"@interfaces/*": ["./src/common/interfaces/*"],
+			"@validators/*": ["./src/common/validators/*"],
 			"@modules/*": ["./src/modules/*"],
 			"@api/*": ["./src/api/*"],
 			"@core/*": ["./src/core/*"]

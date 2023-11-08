@@ -1,0 +1,42 @@
+@mixin breakpoint($point) {
+	@if $point == sm {
+		@media screen and (max-width: 576px) {
+			@content;
+		}
+	} @else if $point == md {
+		@media screen and (max-width: 768px) {
+			@content;
+		}
+	} @else if $point == lg {
+		@media screen and (max-width: 992px) {
+			@content;
+		}
+	} @else if $point == xl {
+		@media screen and (max-width: 1200px) {
+			@content;
+		}
+	} @else if $point == xxl {
+		@media screen and (max-width: 1400px) {
+			@content;
+		}
+	}
+}
+
+$z-modal: 100;
+$z-header: 50;
+$z-popover: 30;
+
+$border-radius-base: 4px;
+
+@mixin avenir-black {
+	font-weight: 900;
+	font-family: 'Avenir Black';
+}
+@mixin avenir-medium {
+	font-weight: 500;
+	font-family: 'Avenir Medium';
+}
+@mixin avenir-book {
+	font-weight: 500;
+	font-family: 'Avenir Book';
+}

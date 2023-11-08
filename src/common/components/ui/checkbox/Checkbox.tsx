@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import { memo } from 'react'
 import { FieldError } from 'react-hook-form'
 import s from './Checkbox.module.scss'
 
@@ -11,7 +10,7 @@ interface Props {
 	disabled?: boolean
 }
 
-const Checkbox = memo((props: Props) => {
+export const Checkbox = (props: Props) => {
 	const { label, checked, onChange, error, disabled = false } = props
 	return (
 		<div className={s.container}>
@@ -36,6 +35,4 @@ const Checkbox = memo((props: Props) => {
 			{error !== undefined ? <p className={s.error}>{error.message}</p> : null}
 		</div>
 	)
-})
-
-export default Checkbox
+}

@@ -1,4 +1,4 @@
-import { CSSProperties, memo, useMemo } from 'react'
+import { CSSProperties, useMemo } from 'react'
 
 interface Props {
 	side: 'bottom' | 'top' | 'left' | 'right'
@@ -7,7 +7,7 @@ interface Props {
 	style?: CSSProperties
 }
 
-const ChevronIcon = memo((props: Props) => {
+export const ChevronIcon = (props: Props) => {
 	const { side, size = 20, className, style } = props
 	const rotate = useMemo(() => {
 		switch (side) {
@@ -36,6 +36,4 @@ const ChevronIcon = memo((props: Props) => {
 			/>
 		</svg>
 	)
-})
-
-export default ChevronIcon
+}

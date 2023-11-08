@@ -1,6 +1,6 @@
 import { INotification } from '@interfaces/INotification'
 import classNames from 'classnames'
-import { memo, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import s from './Toast.module.scss'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 	duration?: number
 }
 
-const Toast = memo((props: Props) => {
+export const Toast = (props: Props) => {
 	const { destroy, notification, duration = 0 } = props
 	const [isHide, setIsHide] = useState(false)
 
@@ -37,6 +37,4 @@ const Toast = memo((props: Props) => {
 			{notification.message}
 		</div>
 	)
-})
-
-export default Toast
+}

@@ -1,4 +1,7 @@
-import { z } from 'zod'
-import { TeamFormValidator } from '../validators/TeamFromValidator'
-
-export interface ITeamForm extends z.infer<typeof TeamFormValidator> {}
+export interface ITeamForm {
+	name: string
+	division: string
+	conference: string
+	foundationYear: number
+	imageUrl: string
+}

@@ -1,7 +1,7 @@
+import { generateRandomString } from '@helpers/generateRandomString'
 import { INotification } from '@interfaces/INotification'
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { nanoid } from 'nanoid'
 import { RootState } from './store'
 
 interface NotificationsState {
@@ -31,7 +31,7 @@ export const { add, remove: removeNotificationAction } =
 
 export const addNotificationAction = (message: string) => {
 	return add({
-		id: nanoid(),
+		id: generateRandomString(),
 		message,
 	})
 }

@@ -1,7 +1,7 @@
-import CloseEyeIcon from '@assets/icons/CloseEyeIcon'
-import EyeIcon from '@assets/icons/EyeIcon'
+import { CloseEyeIcon } from '@assets/icons/CloseEyeIcon'
+import { EyeIcon } from '@assets/icons/EyeIcon'
 import classNames from 'classnames'
-import { ChangeEvent, memo, useMemo, useState } from 'react'
+import { ChangeEvent, useMemo, useState } from 'react'
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form'
 import s from './Input.module.scss'
 
@@ -20,7 +20,7 @@ interface Props {
 	value?: string | number
 }
 
-const Input = memo((props: Props) => {
+export const Input = (props: Props) => {
 	const {
 		id,
 		label,
@@ -74,6 +74,4 @@ const Input = memo((props: Props) => {
 			{error !== undefined ? <p className={s.error}>{error.message}</p> : null}
 		</div>
 	)
-})
-
-export default Input
+}

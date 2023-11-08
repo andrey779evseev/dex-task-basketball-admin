@@ -1,4 +1,4 @@
-const CrossIcon = () => {
+export const CrossIcon = () => {
 	return (
 		<svg width='12' height='12' viewBox='0 0 12 12'>
 			<path
@@ -8,5 +8,3 @@ const CrossIcon = () => {
 		</svg>
 	)
 }
-
-export default CrossIcon

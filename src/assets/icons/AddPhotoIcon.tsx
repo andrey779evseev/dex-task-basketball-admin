@@ -1,10 +1,8 @@
-import { memo } from 'react'
-
 interface Props {
 	className?: string
 }
 
-const AddPhotoIcon = memo((props: Props) => {
+export const AddPhotoIcon = (props: Props) => {
 	const { className } = props
 	return (
 		<svg
@@ -25,6 +23,4 @@ const AddPhotoIcon = memo((props: Props) => {
 			</g>
 		</svg>
 	)
-})
-
-export default AddPhotoIcon
+}

@@ -1,16 +1,16 @@
 import { IPlayer } from '@api/players/dto/IPlayer'
 import { useGetPlayersQuery } from '@api/players/playersApi'
 import { useGetTeamsQuery, useLazyGetTeamQuery } from '@api/teams/teamsApi'
-import LoaderIcon from '@assets/icons/LoaderIcon'
-import PlusIcon from '@assets/icons/PlusIcon'
-import SearchIcon from '@assets/icons/SearchIcon'
-import CardsGrid from '@components/cards-grid/CardsGrid'
-import CardsGridItem from '@components/cards-grid/item/CardsGridItem'
-import EmptyListCard from '@components/empty-list-card/EmptyListCard'
-import PaginationFooter from '@components/pagination-footer/PaginationFooter'
-import Button from '@components/ui/button/Button'
-import Multiselect from '@components/ui/multiselect/Multiselect'
-import Search from '@components/ui/search/Search'
+import { LoaderIcon } from '@assets/icons/LoaderIcon'
+import { PlusIcon } from '@assets/icons/PlusIcon'
+import { SearchIcon } from '@assets/icons/SearchIcon'
+import { CardsGrid } from '@components/CardsGrid/CardsGrid'
+import { CardsGridItem } from '@components/CardsGrid/CardsGridItem/CardsGridItem'
+import { EmptyListCard } from '@components/EmptyListCard/EmptyListCard'
+import { PaginationFooter } from '@components/PaginationFooter/PaginationFooter'
+import { Button } from '@components/ui/Button/Button'
+import { Multiselect } from '@components/ui/Multiselect/Multiselect'
+import { Search } from '@components/ui/Search/Search'
 import { IOption } from '@interfaces/IOption'
 import { ROUTES } from '@pages/router'
 import { useEffect, useMemo, useState } from 'react'
@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom'
 import { MultiValue } from 'react-select'
 import s from './PlayersPage.module.scss'
 
-const PlayersPage = () => {
+export const PlayersPage = () => {
 	const [search, setSearch] = useState('')
 	const [selectedTeams, setSelectedTeams] = useState<MultiValue<IOption>>([])
 	const [page, setPage] = useState(1)
@@ -145,5 +145,3 @@ const PlayersPage = () => {
 		</div>
 	)
 }
-
-export default PlayersPage

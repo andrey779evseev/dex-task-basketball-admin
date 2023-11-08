@@ -1,6 +1,3 @@
-@import '@assets/styles/colors.scss';
-@import '@assets/styles/variables.scss';
-
 .container {
 	width: 100%;
 	height: 100%;
@@ -28,17 +25,19 @@
 		gap: 24px;
 
 		.title {
-			font: $avenir-black-36;
+			@include avenir-black;
+			font-size: 36px;
 			color: $red-40;
 		}
 
 		.description {
-			font: $avenir-book-24;
+			@include avenir-book;
+			font-size: 24px;
 			color: $gray-80;
 		}
 	}
 
-	@media screen and (max-width: $screen-sm) {
+	@include breakpoint(sm) {
 		.image {
 			width: 285px;
 		}

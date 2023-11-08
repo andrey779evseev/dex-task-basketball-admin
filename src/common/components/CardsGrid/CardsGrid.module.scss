@@ -1,0 +1,13 @@
+.cards_container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+
+	@include breakpoint(lg) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include breakpoint(sm) {
+		gap: 12px;
+	}
+}

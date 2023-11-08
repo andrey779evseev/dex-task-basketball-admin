@@ -1,8 +1,8 @@
 import { useGetTeamQuery } from '@api/teams/teamsApi'
-import TeamFormCard from '@modules/teams/components/team-form-card/TeamFormCard'
+import { TeamFormCard } from '@modules/teams/components/TeamFormCard/TeamFormCard'
 import { useParams } from 'react-router-dom'
 
-const EditTeamPage = () => {
+export const EditTeamPage = () => {
 	const { teamId } = useParams()
 	const { data: team, isError } = useGetTeamQuery({
 		id: parseInt(teamId!),
@@ -12,5 +12,3 @@ const EditTeamPage = () => {
 
 	return <TeamFormCard editTeam={team} />
 }
-
-export default EditTeamPage

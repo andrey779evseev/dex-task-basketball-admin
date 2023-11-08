@@ -1,4 +1,4 @@
-const PlusIcon = () => {
+export const PlusIcon = () => {
 	return (
 		<svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
 			<path
@@ -8,5 +8,3 @@ const PlusIcon = () => {
 		</svg>
 	)
 }
-
-export default PlusIcon

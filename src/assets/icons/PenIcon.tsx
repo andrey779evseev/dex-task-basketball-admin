@@ -1,4 +1,4 @@
-const PenIcon = () => {
+export const PenIcon = () => {
 	return (
 		<svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
 			<path
@@ -10,5 +10,3 @@ const PenIcon = () => {
 		</svg>
 	)
 }
-
-export default PenIcon

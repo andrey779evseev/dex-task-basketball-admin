@@ -1,7 +1,7 @@
-import store, { RootState } from '@core/redux/store'
+import { RootState, store } from '@core/redux/store'
 import { parseJwt } from '@helpers/parseJwt'
+import { serializeQuery } from '@helpers/serializeQuery'
 import { logoutAction } from '@modules/authorization/actions'
-import queryString from 'query-string'
 import {
 	BaseQueryFn,
 	createApi,
@@ -20,7 +20,7 @@ const baseQuery = fetchBaseQuery({
 		return headers
 	},
 	paramsSerializer: (params) => {
-		return queryString.stringify(params)
+		return serializeQuery(params)
 	},
 })
 

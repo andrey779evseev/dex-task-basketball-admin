@@ -1,6 +1,3 @@
-@import '@assets/styles/colors.scss';
-@import '@assets/styles/variables.scss';
-
 .form {
 	max-width: 366px;
 	width: 100%;
@@ -17,7 +14,8 @@
 	}
 
 	.suggestion {
-		font: $avenir-medium-14;
+		@include avenir-medium;
+		font-size: 14px;
 		color: $gray-80;
 		align-self: center;
 

@@ -1,0 +1,31 @@
+.container {
+	display: flex;
+	align-items: center;
+	gap: 19px;
+
+	.username {
+		@include avenir-medium;
+		font-size: 14px;
+		color: $gray-100;
+	}
+
+	.avatar {
+		width: 30px;
+		height: 30px;
+		border-radius: 100%;
+	}
+
+	@include breakpoint(md) {
+		gap: 12px;
+
+		.avatar {
+			width: 40px;
+			height: 40px;
+		}
+
+		.username {
+			font-size: 15px;
+			order: 1;
+		}
+	}
+}

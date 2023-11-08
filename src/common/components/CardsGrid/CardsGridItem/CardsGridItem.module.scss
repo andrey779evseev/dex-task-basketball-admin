@@ -1,0 +1,103 @@
+.card {
+	aspect-ratio: 23/24;
+	max-height: 380px;
+	width: 100%;
+	border-radius: $border-radius-base;
+	background: linear-gradient(122deg, $gray-80 1.62%, $gray-90 81.02%);
+	display: grid;
+	grid-template-rows: 1fr 100px;
+
+	.image_container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&.player {
+			padding: 16px 45px 0;
+			align-items: end;
+
+			.image {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		.image {
+			width: 150px;
+			height: 150px;
+		}
+	}
+
+	.footer {
+		width: 100%;
+		height: 100%;
+		background: $gray-100;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+		@include avenir-medium;
+
+		.title,
+		.description {
+			text-align: center;
+		}
+
+		.title {
+			font-size: 18px;
+			color: $white;
+		}
+
+		.description {
+			font-size: 14px;
+			color: $gray-60;
+		}
+	}
+
+	@include breakpoint(xl) {
+		.image_container {
+			.image {
+				width: 100px;
+				height: 100px;
+			}
+		}
+
+		.footer {
+			.title {
+				font-size: 16px;
+			}
+			.description {
+				font-size: 13px;
+			}
+		}
+	}
+
+	@include breakpoint(sm) {
+		.image_container {
+			.image {
+				width: 60px;
+				height: 60px;
+			}
+
+			&.player {
+				padding: 11px 24px 0;
+
+				.image {
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
+
+		.footer {
+			.title {
+				font-size: 15px;
+			}
+		}
+	}
+}

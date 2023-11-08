@@ -1,14 +1,11 @@
-@import '@assets/styles/colors.scss';
-@import '@assets/styles/variables.scss';
-@import '@assets/styles/animations.scss';
-
 .container {
 	display: flex;
 	flex-direction: column;
 
 	.label {
 		color: $gray-80;
-		font: $avenir-medium-14;
+		@include avenir-medium;
+		font-size: 14px;
 		margin-bottom: 4px;
 	}
 
@@ -24,7 +21,8 @@
 			padding-left: 12px;
 			padding-right: 12px;
 			transition: $transition-all-300-ease;
-			font: $avenir-medium-14;
+			@include avenir-medium;
+			font-size: 14px;
 
 			&:hover {
 				background: $gray-40;
@@ -49,7 +47,8 @@
 			}
 
 			&::placeholder {
-				font: $avenir-medium-14;
+				@include avenir-medium;
+				font-size: 14px;
 				color: $gray-80;
 			}
 		}
@@ -65,7 +64,8 @@
 	}
 
 	.error {
-		font: $avenir-medium-12;
+		@include avenir-medium;
+		font-size: 12px;
 		margin-top: 2px;
 		color: $red-40;
 	}

@@ -1,12 +1,12 @@
-import Header from '@components/header/Header'
-import Navbar from '@components/navbar/Navbar'
+import { Header } from '@components/Header/Header'
+import { Navbar } from '@components/Navbar/Navbar'
 import { useUser } from '@hooks/useUser'
 import { ROUTES } from '@pages/router'
 import { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import s from './ProtectedLayout.module.scss'
 
-const ProtectedLayout = () => {
+export const ProtectedLayout = () => {
 	const user = useUser()
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
@@ -31,5 +31,3 @@ const ProtectedLayout = () => {
 		</main>
 	)
 }
-
-export default ProtectedLayout

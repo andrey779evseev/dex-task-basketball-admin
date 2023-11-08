@@ -1,4 +1,4 @@
-const CloseEyeIcon = () => {
+export const CloseEyeIcon = () => {
 	return (
 		<svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
 			<g id='close_eye'>
@@ -13,5 +13,3 @@ const CloseEyeIcon = () => {
 		</svg>
 	)
 }
-
-export default CloseEyeIcon

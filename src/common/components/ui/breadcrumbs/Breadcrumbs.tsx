@@ -1,11 +1,11 @@
-import { Fragment, memo } from 'react'
+import { Fragment } from 'react'
 import s from './Breadcrumbs.module.scss'
 
 interface Props {
 	path: string[]
 }
 
-const Breadcrumbs = memo((props: Props) => {
+export const Breadcrumbs = (props: Props) => {
 	const { path } = props
 	return (
 		<span className={s.breadcrumbs}>
@@ -19,6 +19,4 @@ const Breadcrumbs = memo((props: Props) => {
 			))}
 		</span>
 	)
-})
-
-export default Breadcrumbs
+}
