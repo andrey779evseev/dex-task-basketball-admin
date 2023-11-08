@@ -14,6 +14,7 @@ interface Props {
 	error?: FieldError
 	disabled?: boolean
 	type?: 'text' | 'password' | 'number'
+  autoComplete?: 'off' | 'on' | 'name' | 'email' | 'username' | 'new-password' | 'current-password'
 
 	register?: UseFormRegisterReturn
 	onChange?: (newValue: string) => void
@@ -28,6 +29,7 @@ export const Input = (props: Props) => {
 		error,
 		disabled = false,
 		type = 'text',
+    autoComplete = 'off',
 		value,
 		onChange,
 	} = props
@@ -59,6 +61,7 @@ export const Input = (props: Props) => {
 						[s.input_error]: error !== undefined,
 						[s.password]: type === 'password',
 					})}
+          autoComplete={autoComplete}
 					{...properties}
 				/>
 				{type === 'password' ? (

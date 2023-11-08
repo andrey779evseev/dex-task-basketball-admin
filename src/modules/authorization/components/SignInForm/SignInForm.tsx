@@ -49,6 +49,7 @@ export const SignInForm = () => {
 			<Input
 				id='login'
 				label='Login'
+        autoComplete='username'
 				register={register('login', {
 					minLength: Validators.MinLength(3),
 					maxLength: Validators.MaxLength(50),
@@ -60,6 +61,7 @@ export const SignInForm = () => {
 				id='password'
 				label='Password'
 				type='password'
+        autoComplete='current-password'
 				register={register('password', {
 					minLength: Validators.MinLength(3),
 					maxLength: Validators.MaxLength(50),

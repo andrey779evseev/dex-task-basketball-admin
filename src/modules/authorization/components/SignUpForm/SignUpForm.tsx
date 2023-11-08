@@ -54,6 +54,7 @@ export const SignUpForm = () => {
 			<Input
 				id='name'
 				label='Name'
+        autoComplete='name'
 				register={register('name', {
 					minLength: Validators.MinLength(3),
 					maxLength: Validators.MaxLength(50),
@@ -64,6 +65,7 @@ export const SignUpForm = () => {
 			<Input
 				id='login'
 				label='Login'
+        autoComplete='username'
 				register={register('login', {
 					minLength: Validators.MinLength(3),
 					maxLength: Validators.MaxLength(50),
@@ -75,6 +77,7 @@ export const SignUpForm = () => {
 				id='password'
 				label='Password'
 				type='password'
+        autoComplete='new-password'
 				register={register('password', {
 					minLength: Validators.MinLength(8),
 					maxLength: Validators.MaxLength(50),
@@ -86,6 +89,7 @@ export const SignUpForm = () => {
 				id='password_confirmation'
 				label='Enter your password again'
 				type='password'
+        autoComplete='new-password'
 				register={register('password_confirmation', {
 					minLength: Validators.MinLength(8),
 					maxLength: Validators.MaxLength(50),
