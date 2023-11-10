@@ -55,7 +55,7 @@ export const UploadImage = (props: Props) => {
 					type='file'
 					className={s.input}
 					onChange={upload}
-					accept='image/*'
+					accept='image/jpg, image/jpeg, image/png'
 				/>
 			</div>
 			{error !== undefined ? <p className={s.error}>{error.message}</p> : null}
