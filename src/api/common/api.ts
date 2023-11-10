@@ -1,13 +1,11 @@
-import { RootState, store } from '@core/redux/store'
-import { parseJwt } from '@helpers/parseJwt'
+import { RootState } from '@core/redux/store'
 import { serializeQuery } from '@helpers/serializeQuery'
-import { logoutAction } from '@modules/authorization/actions'
 import {
-	BaseQueryFn,
-	createApi,
-	FetchArgs,
-	fetchBaseQuery,
-	FetchBaseQueryError,
+  BaseQueryFn,
+  FetchArgs,
+  FetchBaseQueryError,
+  createApi,
+  fetchBaseQuery,
 } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
@@ -30,16 +28,16 @@ const baseQueryWithAuthCheck: BaseQueryFn<
 	FetchBaseQueryError
 > = async (args, baseApi, extraOptions) => {
 	const result = await baseQuery(args, baseApi, extraOptions)
-	const token = store.getState().authorization.user?.token
-	if (result.error && token) {
-		const { exp } = parseJwt(token)
-		if (result.error.status === 401 || new Date().getTime() >= exp) {
-			baseApi.dispatch(logoutAction())
-			baseApi.dispatch(api.util.resetApiState())
-			// do not replace pathname with variable ROUTES, it makes cycle deps
-			window.location.pathname = '/sign-in'
-		}
-	}
+	// const token = store.getState().authorization.user?.token
+	// if (result.error && token) {
+	// 	const { exp } = parseJwt(token)
+	// 	if (result.error.status === 401 || new Date().getTime() >= exp) {
+	// 		baseApi.dispatch(logoutAction())
+	// 		baseApi.dispatch(api.util.resetApiState())
+	// 		// do not replace pathname with variable ROUTES, it makes cycle deps
+	// 		window.location.pathname = '/sign-in'
+	// 	}
+	// }
 	return result
 }
 
