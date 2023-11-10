@@ -51,7 +51,12 @@ export const UploadImage = (props: Props) => {
 				)}
 				{url !== undefined ? <div className={s.overlay} /> : null}
 
-				<input type='file' className={s.input} onChange={upload} />
+				<input
+					type='file'
+					className={s.input}
+					onChange={upload}
+					accept='image/*'
+				/>
 			</div>
 			{error !== undefined ? <p className={s.error}>{error.message}</p> : null}
 		</div>
